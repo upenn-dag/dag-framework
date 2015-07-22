@@ -1,0 +1,14 @@
+{
+    "name": "dag/framework",
+    "description": "The DAG Framework.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank Bardon Jr.",
+            "email": "bardonf@upenn.edu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
