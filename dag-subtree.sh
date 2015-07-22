@@ -24,13 +24,13 @@ git subsplit update
 for component in "${components[@]}"
 do
     echo "Splitting ${component} component"
-    git subsplit publish "src/Component/${component}:git@gitlab.med.upenn.edu:dag-framework/${component}.git" --heads="master develop"
+    git subsplit publish "src/Component/${component}:git@gitlab.med.upenn.edu:dag-framework/${component}.git" --heads="master 1.0"
     sleep 1 # Added for coherence of output
 done
 
 for bundle in "${bundles[@]}"
 do
     echo "Splitting ${bundle} bundle"
-    git subsplit publish "src/Bundle/${bundle}:git@gitlab.med.upenn.edu:dag-framework/${bundle}.git" --heads="master develop"
+    git subsplit publish "src/Bundle/${bundle}:git@gitlab.med.upenn.edu:dag-framework/${bundle}.git" --heads="master 1.0"
     sleep 1 # Added for coherence of output
 done
