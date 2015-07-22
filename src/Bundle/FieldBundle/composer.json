@@ -1,0 +1,50 @@
+{
+    "name": "dag/field-bundle",
+    "type": "symfony-bundle",
+    "description": "Accard field bundle",
+    "keywords": ["field"],
+    "homepage": "http://accard.med.upenn.edu",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank Bardon Jr.",
+            "homepage": "http://frankbardon.com"
+        },
+        {
+            "name": "Dylan Pierce",
+            "homepage": "http://dylanjpierce.com"
+        },
+        {
+            "name": "Database and Applications Group",
+            "homepage": "http://dag.med.upenn.edu"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "dag/resource-bundle":    "~1.0",
+        "dag/field":              "~1.0"
+    },
+    "require-dev": {
+        "codeception/codeception":          "dev-master",
+        "codeception/mockery-module":       "dev-master"
+    },
+    "suggest": {
+        "dag/web-bundle": "Provides the default web interface",
+        "dag/fixtures-bundle": "Provides the default Accard fixtures"
+    },
+    "autoload": {
+        "psr-4": { "DAG\\Bundle\\FieldBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "repositories": [
+        { "type": "composer", "url": "http://accard-dev.med.upenn.edu/satis" }
+    ]
+}

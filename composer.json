@@ -1,14 +1,65 @@
 {
     "name": "dag/framework",
-    "description": "The DAG Framework.",
-    "type": "library",
     "license": "MIT",
+    "type": "library",
+    "description": "DAG Framework Tools",
     "authors": [
         {
             "name": "Frank Bardon Jr.",
-            "email": "bardonf@upenn.edu"
+            "homepage": "http://frankbardon.me"
+        },
+        {
+            "name": "Database and Applications Group",
+            "homepage": "http://dag.med.upenn.edu"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "DAG\\Bundle\\": "src/Bundle/",
+            "DAG\\Component\\": "src/Component/"
+        }
+    },
+    "require": {
+        "php":                                   ">=5.4.0",
+        "symfony/symfony":                       "~2.7.0",
+        "symfony/assetic-bundle":                "~2.6",
+        "symfony/monolog-bundle":                "~2.7",
+        "sensio/distribution-bundle":            "~3.0",
+        "sensio/framework-extra-bundle":         "~3.0",
+        "doctrine/orm":                          "~2.4.0",
+        "doctrine/doctrine-bundle":              "~1.4",
+        "doctrine/doctrine-cache-bundle":        "~1.0",
+        "doctrine/doctrine-migrations-bundle":   "2.1.*@dev",
+        "twig/extensions":                       "~1.2",
+        "friendsofsymfony/rest-bundle":          "~1.5",
+        "jms/serializer-bundle":                 "0.13.*",
+        "white-october/pagerfanta-bundle":       "~1.0",
+        "lexik/translation-bundle":              "~2.1",
+        "gedmo/doctrine-extensions":             "~2.4",
+        "willdurand/hateoas-bundle":             "~0.5"
+    },
+    "require-dev": {
+        "codeception/codeception": "dev-master",
+        "codeception/mockery-module": "dev-master"
+    },
+    "replace": {
+        "dag/field": "self.version",
+        "dag/option": "self.version",
+        "dag/prototype": "self.version",
+        "dag/resource": "self.version",
+        "dag/field-bundle": "self.version",
+        "dag/option-bundle": "self.version",
+        "dag/prototype-bundle": "self.version",
+        "dag/resource-bundle": "self.version",
+        "dag/settings-bundle": "self.version"
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
 }

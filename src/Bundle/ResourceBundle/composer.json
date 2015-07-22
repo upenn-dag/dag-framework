@@ -1,0 +1,40 @@
+{
+    "name": "dag/resource-bundle",
+    "type": "symfony-bundle",
+    "description": "Accard resource bundle",
+    "keywords": ["resource", "storage", "persistence", "accard"],
+    "homepage": "http://accard.med.upenn.edu",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.3",
+        "dag/resource":                     "~1.0",
+        "symfony/framework-bundle":         "~2.7|~3.0",
+        "symfony/property-access":          "~2.7|~3.0",
+        "symfony/form":                     "~2.7|~3.0",
+        "symfony/expression-language":      "~2.7|~3.0",
+        "friendsofsymfony/rest-bundle":     "~1.5",
+        "white-october/pagerfanta-bundle":  "~1.0",
+        "doctrine/orm":                     "~2.5",
+        "doctrine/doctrine-bundle":         "~1.4",
+        "jms/serializer-bundle":            "~0.12"
+    },
+    "require-dev": {
+        "codeception/codeception":          "dev-master",
+        "codeception/mockery-module":       "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "DAG\\Bundle\\ResourceBundle\\": "" }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "repositories": [
+        { "type": "composer", "url": "http://accard-dev.med.upenn.edu/satis" }
+    ]
+}
