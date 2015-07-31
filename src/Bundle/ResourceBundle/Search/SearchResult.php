@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -13,7 +13,7 @@ namespace DAG\Bundle\ResourceBundle\Search;
 use FOS\ElasticaBundle\HybridResult;
 
 /**
- * Accard search result.
+ * Search result.
  *
  * Functionality wrapping around FOS Elastica search results.
  *

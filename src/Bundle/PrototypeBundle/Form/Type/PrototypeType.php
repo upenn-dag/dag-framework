@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Accard prototype type.
+ * Prototype form type.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -27,6 +27,13 @@ class PrototypeType extends AbstractType
      * @var string
      */
     protected $subjectName;
+
+    /**
+     * Prefix.
+     *
+     * @var string
+     */
+    protected $prefix;
 
     /**
      * Data class.
@@ -47,12 +54,14 @@ class PrototypeType extends AbstractType
      * Constructor.
      *
      * @param string $subjectName
+     * @param string $prefix
      * @param string $dataClass
      * @param array  $validationGroups
      */
-    public function __construct($subjectName, $dataClass, array $validationGroups)
+    public function __construct($subjectName, $prefix, $dataClass, array $validationGroups)
     {
         $this->subjectName = $subjectName;
+        $this->prefix = $prefix;
         $this->dataClass = $dataClass;
         $this->validationGroups = $validationGroups;
     }
@@ -64,18 +73,18 @@ class PrototypeType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'label' => sprintf('accard.%s_prototype.form.name', $this->subjectName),
+                'label' => sprintf('%s.%s_prototype.form.name', $this->prefix, $this->subjectName),
             ))
             ->add('presentation', 'text', array(
-                'label' => sprintf('accard.%s_prototype.form.presentation', $this->subjectName),
+                'label' => sprintf('%s.%s_prototype.form.presentation', $this->prefix, $this->subjectName),
             ))
             ->add('description', 'text', array(
-                'label' => sprintf('accard.%s_prototype.form.description', $this->subjectName),
+                'label' => sprintf('%s.%s_prototype.form.description', $this->prefix, $this->subjectName),
                 'required' => false,
             ))
             ->add('fields', 'collection', array(
-                  'label' => sprintf('accard.%s_prototype.form.fields', $this->subjectName),
-                  'type' => sprintf('accard_%s_prototype_field_choice', $this->subjectName),
+                  'label' => sprintf('%s.%s_prototype.form.fields', $this->prefix, $this->subjectName),
+                  'type' => sprintf('%s_%s_prototype_field_choice', $this->prefix, $this->subjectName),
                   'allow_add' => true,
                   'allow_delete' => true,
             ))
@@ -100,6 +109,6 @@ class PrototypeType extends AbstractType
      */
     public function getName()
     {
-        return sprintf('accard_%s_prototype', $this->subjectName);
+        return sprintf('%s_%s_prototype', $this->prefix, $this->subjectName);
     }
 }

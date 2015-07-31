@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -87,7 +86,7 @@ class DoctrineTargetEntitiesResolver
         if (class_exists($key)) {
             return $key;
         }
-
+die(var_dump($container));
         throw new InvalidArgumentException(
             sprintf('The class %s does not exist.', $key)
         );

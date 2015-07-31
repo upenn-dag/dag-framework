@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -16,7 +16,7 @@ use Doctrine\Common\Collections\Collection;
 use DAG\Bundle\SettingsBundle\Templating\Helper\SettingsHelper;
 
 /**
- * Accard settings Twig extension.
+ * DAG settings Twig extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -46,8 +46,8 @@ class SettingsExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('accard_settings', array($this, 'getSettings')),
-            new Twig_SimpleFunction('accard_setting', array($this, 'getParameter')),
+            new Twig_SimpleFunction('dag_settings', array($this, 'getSettings')),
+            new Twig_SimpleFunction('dag_setting', array($this, 'getParameter')),
         );
     }
 
@@ -78,6 +78,6 @@ class SettingsExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'accard_settings';
+        return 'dag_settings';
     }
 }

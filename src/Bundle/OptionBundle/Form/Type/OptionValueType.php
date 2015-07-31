@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -55,16 +55,16 @@ class OptionValueType extends AbstractType
         $builder
             ->add('value', 'text', array(
                 'required' => true,
-                'label' => 'accard.form.option_value.value',
+                'label' => 'dag.form.option_value.value',
             ))
             ->add('order', 'number', array(
                 'required' => true,
-                'label' => 'accard.form.option_value.order',
+                'label' => 'dag.form.option_value.order',
                 'empty_data' => 0,
             ))
             ->add('locked', 'checkbox', array(
                 'required' => false,
-                'label' => 'accard.form.option_value.locked',
+                'label' => 'dag.form.option_value.locked',
             ))
         ;
     }
@@ -87,6 +87,6 @@ class OptionValueType extends AbstractType
      */
     public function getName()
     {
-        return 'accard_option_value';
+        return 'dag_option_value';
     }
 }

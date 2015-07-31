@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -26,13 +26,13 @@ class RegisterImporterPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('accard.import.registry')) {
+        if (!$container->hasDefinition('dag.import.registry')) {
             return;
         }
 
-        $registry = $container->getDefinition('accard.import.registry');
+        $registry = $container->getDefinition('dag.import.registry');
 
-        foreach ($container->findTaggedServiceIds('accard.importer') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('dag.importer') as $id => $attributes) {
             $registry->addMethodCall('registerImporter', array($attributes[0]['importer'], $id));
         }
     }

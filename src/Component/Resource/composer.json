@@ -1,9 +1,9 @@
 {
     "name": "dag/resource",
     "type": "library",
-    "description": "Accard resource component",
+    "description": "DAG resource component",
     "keywords": ["resource"],
-    "homepage": "http://accard.med.upenn.edu",
+    "homepage": "http://dag.med.upenn.edu",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",

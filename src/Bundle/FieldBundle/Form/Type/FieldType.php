@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Accard field type.
+ * Field type.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -29,6 +29,13 @@ class FieldType extends AbstractType
      * @var string
      */
     protected $subjectName;
+
+    /**
+     * Prefix.
+     *
+     * @var string
+     */
+    protected $prefix;
 
     /**
      * Data class.
@@ -48,12 +55,14 @@ class FieldType extends AbstractType
      * Constructor.
      *
      * @param string $subjectName
+     * @param string $prefix
      * @param string $dataClass
      * @param array  $validationGroups
      */
-    public function __construct($subjectName, $dataClass, array $validationGroups)
+    public function __construct($subjectName, $prefix, $dataClass, array $validationGroups)
     {
         $this->subjectName = $subjectName;
+        $this->prefix = $prefix;
         $this->dataClass = $dataClass;
         $this->validationGroups = $validationGroups;
     }
@@ -65,28 +74,28 @@ class FieldType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'label' => 'accard.field.form.name'
+                'label' => 'dag.field.form.name'
             ))
             ->add('presentation', 'text', array(
-                'label' => 'accard.field.form.presentation'
+                'label' => 'dag.field.form.presentation'
             ))
             ->add('type', 'choice', array(
-                'label' => 'accard.field.form.type',
+                'label' => 'dag.field.form.type',
                 'choices' => FieldTypes::getChoices()
             ))
-            ->add('option', 'accard_option_choice', array(
-                'label' => 'accard.field.form.option',
+            ->add('option', 'dag_option_choice', array(
+                'label' => 'dag.field.form.option',
                 'required' => false
             ))
             ->add('allowMultiple', 'checkbox', array(
-                'label' => 'accard.field.form.allow_multiple',
+                'label' => 'dag.field.form.allow_multiple',
                 'required' => false,
             ))
             ->add('addable', 'checkbox', array(
-                'label' => 'accard.field.form.addable',
+                'label' => 'dag.field.form.addable',
                 'required' => false,
             ))
-            ->add('order', 'accard_option_order_choice', array(
+            ->add('order', 'dag_option_order_choice', array(
                 'required' => true,
             ))
         ;
@@ -110,6 +119,6 @@ class FieldType extends AbstractType
      */
     public function getName()
     {
-        return sprintf('accard_%s_field', $this->subjectName);
+        return sprintf('%s_%s_field', $this->prefix, $this->subjectName);
     }
 }

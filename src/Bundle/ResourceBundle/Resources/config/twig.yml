@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,19 +7,18 @@
 
 parameters:
 
-    accard.twig.extension.resource.class: DAG\Bundle\ResourceBundle\Twig\ResourceExtension
-    accard.twig.extension.resource.pagination_template: 'AccardResourceBundle:Twig:paginate.html.twig'
-    accard.twig.extension.resource.sorting_template: 'AccardResourceBundle:Twig:sorting.html.twig'
+    dag.twig.extension.resource.class: DAG\Bundle\ResourceBundle\Twig\ResourceExtension
+    dag.twig.extension.resource.pagination_template: 'DAGResourceBundle:Twig:paginate.html.twig'
+    dag.twig.extension.resource.sorting_template: 'DAGResourceBundle:Twig:sorting.html.twig'
 
 services:
 
-    accard.twig.extension.resource:
-        class: %accard.twig.extension.resource.class%
+    dag.twig.extension.resource:
+        class: %dag.twig.extension.resource.class%
         arguments:
             - @router
-            - %accard.import.signals%
-            - %accard.twig.extension.resource.pagination_template%
-            - %accard.twig.extension.resource.sorting_template%
+            - %dag.twig.extension.resource.pagination_template%
+            - %dag.twig.extension.resource.sorting_template%
         tags:
             - { name: twig.extension }
             - { name: kernel.event_listener, event: kernel.request, method: fetchRequest }

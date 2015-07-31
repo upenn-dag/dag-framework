@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -55,14 +55,14 @@ class ResourceExtension extends ContainerAwareExtension
             $this->createIntegerFunctionArray('tan', 'tan'),
 
             // Integer array functions
-            $this->createArrayFunctionArray('average', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_average'),
+            $this->createArrayFunctionArray('average', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_average'),
             $this->createArrayFunctionArray('max', 'max'),
-            $this->createArrayFunctionArray('mean', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_average'),
-            $this->createArrayFunctionArray('median', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_median'),
+            $this->createArrayFunctionArray('mean', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_average'),
+            $this->createArrayFunctionArray('median', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_median'),
             $this->createArrayFunctionArray('min', 'min'),
-            $this->createArrayFunctionArray('standard_deviation', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_standard_deviation'),
+            $this->createArrayFunctionArray('standard_deviation', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_standard_deviation'),
             $this->createArrayFunctionArray('sum', 'array_sum'),
-            $this->createArrayFunctionArray('variance', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_variance'),
+            $this->createArrayFunctionArray('variance', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_variance'),
 
             // Array functions
             $this->createArrayFunctionArray('count', 'count'),
@@ -70,7 +70,7 @@ class ResourceExtension extends ContainerAwareExtension
             $this->createArrayFunctionArray('pop', 'array_pop'),
             $this->createArrayFunctionArray('reverse', 'array_reverse'),
             $this->createArrayFunctionArray('shift', 'array_shift'),
-            $this->createArrayFunctionArray('slice', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\accard_slice'),
+            $this->createArrayFunctionArray('slice', '\DAG\Bundle\ResourceBundle\ExpressionLanguage\dag_slice'),
             $this->createArrayFunctionArray('values', 'array_values'),
             $this->createArrayFunctionArray('join', 'implode'),
             $this->createArrayFunctionArray('split', 'explode'),
@@ -281,11 +281,11 @@ if (!defined('ACCARD_RESOURCE_EXTENSION_LOADED')) {
 
     define('ACCARD_RESOURCE_EXTENSION_LOADED', true);
 
-    function accard_average(array $array) {
+    function dag_average(array $array) {
         return array_sum($array)/count($array);
     }
 
-    function accard_median(array $array) {
+    function dag_median(array $array) {
         if (!$count = count($array)) {
             return 0;
         }
@@ -303,12 +303,12 @@ if (!defined('ACCARD_RESOURCE_EXTENSION_LOADED')) {
         return $median;
     }
 
-    function accard_variance(array $array) {
+    function dag_variance(array $array) {
         if (!$count = count($array)) {
             return 0;
         }
 
-        $mean = accard_average($array);
+        $mean = dag_average($array);
         $sumOfSquares = 0;
         for ($i = 0; $i < $count; $i++) {
             $sumOfSquares += ($array[$i] - $mean) * ($array[$i] - $mean);
@@ -317,13 +317,13 @@ if (!defined('ACCARD_RESOURCE_EXTENSION_LOADED')) {
         return $sumOfSquares/($count-1);
     }
 
-    function accard_standard_deviation(array $array){
+    function dag_standard_deviation(array $array){
         if (!$count = count($array)) {
             return 0;
         }
 
         $deviations = array();
-        $mean = accard_average($array);
+        $mean = dag_average($array);
         foreach ($array as $key => $value) {
             $deviations[$key] = pow($value - $mean, 2);
         }
@@ -331,7 +331,7 @@ if (!defined('ACCARD_RESOURCE_EXTENSION_LOADED')) {
         return sqrt(array_sum($deviations)/(count($deviations)-1));
     }
 
-    function accard_slice($array, $offset, $length = null, $preserveKeys = false) {
+    function dag_slice($array, $offset, $length = null, $preserveKeys = false) {
         if (is_array($array)) {
             return array_slice($array, $offset, $length, $preserveKeys);
         } elseif ($array instanceof Collection) {

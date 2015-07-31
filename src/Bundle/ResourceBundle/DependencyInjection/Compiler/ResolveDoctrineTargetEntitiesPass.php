@@ -1,18 +1,17 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle\DependencyInjection\Compiler;
 
 use DAG\Bundle\ResourceBundle\DependencyInjection\DoctrineTargetEntitiesResolver;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
+use DAG\Bundle\ResourceBundle\DAGResourceBundle;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -34,6 +33,12 @@ class ResolveDoctrineTargetEntitiesPass implements CompilerPassInterface
      */
     private $bundlePrefix;
 
+    /**
+     * Constructor.
+     *
+     * @param string $bundlePrefix
+     * @param array $interfaces
+     */
     public function __construct($bundlePrefix, array $interfaces)
     {
         $this->bundlePrefix = $bundlePrefix;
@@ -45,7 +50,7 @@ class ResolveDoctrineTargetEntitiesPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (AccardResourceBundle::DRIVER_DOCTRINE_ORM === $this->getDriver($container)) {
+        if (DAGResourceBundle::DRIVER_DOCTRINE_ORM === $this->getDriver($container)) {
             $resolver = new DoctrineTargetEntitiesResolver();
             $resolver->resolve($container, $this->interfaces);
         }

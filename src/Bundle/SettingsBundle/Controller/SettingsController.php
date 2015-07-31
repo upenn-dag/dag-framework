@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -48,14 +48,14 @@ class SettingsController extends Controller
             $messageType = 'success';
             try {
                 $manager->save($namespace, $form->getData());
-                $message = $this->getTranslator()->trans('accard.settings.update', array(), 'flashes');
+                $message = $this->getTranslator()->trans('dag.settings.update', array(), 'flashes');
             } catch (ValidatorException $exception) {
                 $message = $this->getTranslator()->trans($exception->getMessage(), array(), 'validators');
                 $messageType = 'error';
             }
             $request->getSession()->getBag('flashes')->add($messageType, $message);
 
-            $params = $request->get('_accard');
+            $params = $request->get('_dag');
             if (isset($params['redirect']) && isset($params['redirect']['route'])) {
                 return $this->redirect(
                     $this->generateUrl(
@@ -70,7 +70,7 @@ class SettingsController extends Controller
             }
         }
 
-        return $this->render($request->attributes->get('template', 'AccardSettingsBundle:Settings:update.html.twig'), array(
+        return $this->render($request->attributes->get('template', 'DAGSettingsBundle:Settings:update.html.twig'), array(
             'settings' => $settings,
             'form'     => $form->createView()
         ));
@@ -83,7 +83,7 @@ class SettingsController extends Controller
      */
     protected function getSettingsManager()
     {
-        return $this->get('accard.settings.manager');
+        return $this->get('dag.settings.manager');
     }
 
     /**
@@ -93,7 +93,7 @@ class SettingsController extends Controller
      */
     protected function getSettingsFormFactory()
     {
-        return $this->get('accard.settings.form_factory');
+        return $this->get('dag.settings.form_factory');
     }
 
     /**

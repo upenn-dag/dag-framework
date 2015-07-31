@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -11,18 +11,18 @@
 namespace DAG\Bundle\PrototypeBundle\DependencyInjection;
 
 use DAG\Bundle\ResourceBundle\DependencyInjection\AbstractResourceExtension;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
+use DAG\Bundle\ResourceBundle\DAGResourceBundle;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Accard prototype bundle extension.
+ * DAG prototype bundle extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardPrototypeExtension extends AbstractResourceExtension
+class DAGPrototypeExtension extends AbstractResourceExtension
 {
     /**
      * {@inheritDoc}
@@ -41,28 +41,34 @@ class AccardPrototypeExtension extends AbstractResourceExtension
         $subjects = array();
 
         foreach ($config['classes'] as $subject => $parameters) {
+            list($prefix, $subject) = $this->mapResourceName($subject);
             $subjects[$subject] = $parameters;
             unset($parameters['subject']);
 
             foreach ($parameters as $resource => $classes) {
-                $convertedConfig[$subject.'_'.$resource] = $classes;
+                $convertedConfig[$prefix.':'.$subject.'_'.$resource] = $classes;
             }
 
-            $this->createSubjectServices($container, $config['driver'], $subject, $convertedConfig);
+            $this->createSubjectServices($container, $config['driver'], $subject, $prefix, $convertedConfig);
 
+            if (!isset($config['validation_groups'][$subject]['prefix'])) {
+                $config['validation_groups'][$subject]['prefix'] = $prefix;
+            }
             if (!isset($config['validation_groups'][$subject]['prototype'])) {
-                $config['validation_groups'][$subject]['prototype'] = array('accard');
+                $config['validation_groups'][$subject]['prototype'] = array($prefix);
             }
         }
 
-        $container->setParameter('accard.prototype.subjects', $subjects);
+        $container->setParameter('dag.prototype.subjects', $subjects);
 
         $config['classes'] = $convertedConfig;
         $convertedConfig = array();
 
         foreach ($config['validation_groups'] as $subject => $parameters) {
+            $groupPrefix = $parameters['prefix'];
+            unset($parameters['prefix']);
             foreach ($parameters as $resource => $validationGroups) {
-                $convertedConfig[$subject.'_'.$resource] = $validationGroups;
+                $convertedConfig[$groupPrefix.':'.$subject.'_'.$resource] = $validationGroups;
             }
         }
 
@@ -79,33 +85,33 @@ class AccardPrototypeExtension extends AbstractResourceExtension
      * @param string           $subject
      * @param array            $config
      */
-    private function createSubjectServices(ContainerBuilder $container, $driver, $subject, array $config)
+    private function createSubjectServices(ContainerBuilder $container, $driver, $subject, $prefix, array $config)
     {
         $prototypeAlias = $subject.'_prototype';
-        $prototypeClasses = $config[$prototypeAlias];
+        $prototypeClasses = $config[$prefix.':'.$prototypeAlias];
 
         // Form type.
         $prototypeFormType = new Definition($prototypeClasses['form']);
         $prototypeFormType
-            ->setArguments(array($subject, $prototypeClasses['model'], '%accard.validation_group.'.$prototypeAlias.'%'))
-            ->addTag('form.type', array('alias' => 'accard_'.$prototypeAlias))
+            ->setArguments(array($subject, $prefix, $prototypeClasses['model'], '%'.$prefix.'.validation_group.'.$prototypeAlias.'%'))
+            ->addTag('form.type', array('alias' => $prefix.'_'.$prototypeAlias))
         ;
 
-        $container->setDefinition('accard.form.type.'.$prototypeAlias, $prototypeFormType);
+        $container->setDefinition($prefix.'.form.type.'.$prototypeAlias, $prototypeFormType);
 
         // Choice form type.
         $choiceFormType = new Definition('DAG\Bundle\PrototypeBundle\Form\Type\PrototypeChoiceType');
         $choiceFormType
-            ->setArguments(array($subject, new Reference('accard.provider.'.$prototypeAlias)))
-            ->addTag('form.type', array('alias' => 'accard_'.$prototypeAlias.'_choice'))
+            ->setArguments(array($subject, $prefix, new Reference($prefix.'.provider.'.$prototypeAlias)))
+            ->addTag('form.type', array('alias' => $prefix.'_'.$prototypeAlias.'_choice'))
         ;
 
-        $container->setDefinition('accard.form.type.'.$prototypeAlias.'_choice', $choiceFormType);
+        $container->setDefinition($prefix.'.form.type.'.$prototypeAlias.'_choice', $choiceFormType);
 
         // Provider.
         $prototypeProvider = new Definition('DAG\Component\Prototype\Provider\PrototypeProvider');
-        $prototypeProvider->addArgument(new Reference('accard.repository.'.$prototypeAlias));
+        $prototypeProvider->addArgument(new Reference($prefix.'.repository.'.$prototypeAlias));
 
-        $container->setDefinition('accard.provider.'.$prototypeAlias, $prototypeProvider);
+        $container->setDefinition($prefix.'.provider.'.$prototypeAlias, $prototypeProvider);
     }
 }

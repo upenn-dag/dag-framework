@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -26,13 +26,13 @@ class RegisterExpressionLanguagePass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('accard.expression_language')) {
+        if (!$container->hasDefinition('dag.expression_language')) {
             return;
         }
 
-        $exprLang = $container->getDefinition('accard.expression_language');
+        $exprLang = $container->getDefinition('dag.expression_language');
 
-        foreach ($container->findTaggedServiceIds('accard.expression_language_extension') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('dag.expression_language_extension') as $id => $attributes) {
             $exprLang->addMethodCall('registerExtension', array(new Reference($id)));
         }
     }

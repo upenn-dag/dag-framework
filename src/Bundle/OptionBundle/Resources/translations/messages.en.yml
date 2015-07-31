@@ -1,4 +1,4 @@
-accard:
+dag:
     option:
         entity_name: Option
         form:
@@ -7,6 +7,7 @@ accard:
             order: Order
             presentation: Presentation
             values: Values
+            choose: Choose an Option
         action:
             add: Add Option
             create: Create Option
@@ -27,6 +28,7 @@ accard:
             id: Id
             value: Value
             locked: Locked
+            choose: Choose an Option
         action:
             add: Add Option Value
             create: Create Option Value

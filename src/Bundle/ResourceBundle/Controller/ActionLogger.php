@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -17,7 +17,7 @@ use DAG\Component\Resource\Model\LogInterface;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
- * Accard resource action logger.
+ * Resource action logger.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -188,7 +188,7 @@ class ActionLogger
     private function prepareAttributes(ParameterBag $attributes)
     {
         $params = $attributes->get('_route_params');
-        unset($params['_accard']);
+        unset($params['_dag']);
 
         $attrs = array(
             'route'  => $attributes->get('_route'),

@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
@@ -27,7 +26,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Base resource controller for Accard.
+ * DAG Framework base resource controller.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -99,7 +98,7 @@ class ResourceController extends FOSRestController implements InitializableContr
 
         // Initialize the expression language.
         // This may not be the best place to put this...
-        AccardLanguage::setExpressionLanguage($container->get('accard.expression_language'));
+        AccardLanguage::setExpressionLanguage($container->get('dag.expression_language'));
 
         $this->resourceResolver = new ResourceResolver($this->config);
 
@@ -123,7 +122,7 @@ class ResourceController extends FOSRestController implements InitializableContr
                 $this->actionLogger = new ActionLogger(
                     $this->config,
                     $this->getUser(),
-                    $container->get('accard.manager.log')
+                    $container->get('dag.manager.log')
                 );
             }
         }
@@ -241,8 +240,8 @@ class ResourceController extends FOSRestController implements InitializableContr
 
             // On success, add last saved resource to session for later use...
             $session = $this->get('session');
-            $session->set('accard-last-created-resource-type', $this->config->getResourceName(), true);
-            $session->set('accard-last-created-resource-id', $resource->getId(), true);
+            $session->set('dag-last-created-resource-type', $this->config->getResourceName(), true);
+            $session->set('dag-last-created-resource-id', $resource->getId(), true);
 
             return $this->redirectHandler->redirectTo($resource);
         }
@@ -290,8 +289,8 @@ class ResourceController extends FOSRestController implements InitializableContr
 
             // On success, add last saved resource to session for later use...
             $session = $this->get('session');
-            $session->set('accard-last-updated-resource-type', $this->config->getResourceName(), true);
-            $session->set('accard-last-updated-resource-id', $resource->getId(), true);
+            $session->set('dag-last-updated-resource-type', $this->config->getResourceName(), true);
+            $session->set('dag-last-updated-resource-id', $resource->getId(), true);
 
             return $this->redirectHandler->redirectTo($resource);
         }
@@ -426,12 +425,12 @@ class ResourceController extends FOSRestController implements InitializableContr
             return $response;
         }
 
-        $response->headers->set('Accard-Last-Created-Resource-Type', $session->get('accard-last-created-resource-type'));
-        $response->headers->set('Accard-Last-Created-Resource-Id', $session->get('accard-last-created-resource-id'));
-        $response->headers->set('Accard-Last-Updated-Resource-Type', $session->get('accard-last-updated-resource-type'));
-        $response->headers->set('Accard-Last-Updated-Resource-Id', $session->get('accard-last-updated-resource-id'));
-        $response->headers->set('Accard-Last-Deleted-Resource-Type', $session->get('accard-last-deleted-resource-type'));
-        $response->headers->set('Accard-Last-Deleted-Resource-Id', $session->get('accard-last-deleted-resource-id'));
+        $response->headers->set('DAG-Last-Created-Resource-Type', $session->get('dag-last-created-resource-type'));
+        $response->headers->set('DAG-Last-Created-Resource-Id', $session->get('dag-last-created-resource-id'));
+        $response->headers->set('DAG-Last-Updated-Resource-Type', $session->get('dag-last-updated-resource-type'));
+        $response->headers->set('DAG-Last-Updated-Resource-Id', $session->get('dag-last-updated-resource-id'));
+        $response->headers->set('DAG-Last-Deleted-Resource-Type', $session->get('dag-last-deleted-resource-type'));
+        $response->headers->set('DAG-Last-Deleted-Resource-Id', $session->get('dag-last-deleted-resource-id'));
 
         return $response;
     }

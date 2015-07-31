@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -97,7 +97,7 @@ abstract class AbstractDatabaseDriver implements DatabaseDriverInterface
         $definition = new Definition('DAG\Bundle\ResourceBundle\Controller\Configuration');
         $definition
             ->setFactory(array(
-                new Reference('accard.controller.configuration_factory'),
+                new Reference('dag.controller.configuration_factory'),
                 'createConfiguration'
             ))
             ->setArguments(array($this->prefix, $this->resourceName, $this->templates))

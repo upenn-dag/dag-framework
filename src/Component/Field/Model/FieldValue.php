@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DAG\Component\Option\Model\OptionValueInterface;
 
 /**
- * Accard field to subject relationship.
+ * Field value model.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

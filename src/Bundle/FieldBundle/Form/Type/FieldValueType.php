@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -32,6 +32,13 @@ class FieldValueType extends AbstractType
     protected $subjectName;
 
     /**
+     * Prefix.
+     *
+     * @var string
+     */
+    protected $prefix;
+
+    /**
      * Data class.
      *
      * @var string
@@ -49,12 +56,14 @@ class FieldValueType extends AbstractType
      * Constructor.
      *
      * @param string $subjectName
+     * @param string $prefix
      * @param string $dataClass
      * @param array  $validationGroups
      */
-    public function __construct($subjectName, $dataClass, array $validationGroups)
+    public function __construct($subjectName, $prefix, $dataClass, array $validationGroups)
     {
         $this->subjectName = $subjectName;
+        $this->prefix = $prefix;
         $this->dataClass = $dataClass;
         $this->validationGroups = $validationGroups;
     }
@@ -65,7 +74,7 @@ class FieldValueType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('field', sprintf('accard_%s_field_choice', $this->subjectName))
+            ->add('field', sprintf('%s_%s_field_choice', $this->prefix, $this->subjectName))
             ->addEventSubscriber(new BuildFieldValueFormListener($builder->getFormFactory()))
         ;
 
@@ -107,7 +116,7 @@ class FieldValueType extends AbstractType
      */
     public function getName()
     {
-        return sprintf('accard_%s_field_value', $this->subjectName);
+        return sprintf('%s_%s_field_value', $this->prefix, $this->subjectName);
     }
 
     /**

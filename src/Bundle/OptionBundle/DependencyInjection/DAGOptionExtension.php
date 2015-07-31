@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -14,11 +14,11 @@ use DAG\Bundle\ResourceBundle\DependencyInjection\AbstractResourceExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Accard option bundle extension.
+ * DAG option bundle extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardOptionExtension extends AbstractResourceExtension
+class DAGOptionExtension extends AbstractResourceExtension
 {
     /**
      * {@inheritdoc}

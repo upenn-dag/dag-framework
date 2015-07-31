@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,12 +7,12 @@
 
 parameters:
 
-    accard.templating.helper.option.class: DAG\Bundle\OptionBundle\Templating\Helper\OptionHelper
+    dag.templating.helper.option.class: DAG\Bundle\OptionBundle\Templating\Helper\OptionHelper
 
 services:
 
-    accard.templating.helper.option:
-        class: %accard.templating.helper.option.class%
-        arguments: ['@accard.provider.option']
+    dag.templating.helper.option:
+        class: %dag.templating.helper.option.class%
+        arguments: ['@dag.provider.option']
         tags:
-            - { name: templating.helper, alias: accard_option }
+            - { name: templating.helper, alias: dag_option }

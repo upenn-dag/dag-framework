@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -47,6 +47,6 @@ class OptionOrderChoiceType extends AbstractType
      */
     public function getName()
     {
-        return 'accard_option_order_choice';
+        return 'dag_option_order_choice';
     }
 }

@@ -24,9 +24,9 @@ class ResourceResolvingFactoryTest extends \Codeception\TestCase\Test
         $resource = 'RESOURCE';
         $resourceType = 1;
 
-        $managerName = 'accard.manager.RESOURCE';
-        $repositoryName = 'accard.repository.RESOURCE';
-        $formName = 'accard.form.type.RESOURCE';
+        $managerName = 'dag.manager.RESOURCE';
+        $repositoryName = 'dag.repository.RESOURCE';
+        $formName = 'dag.form.type.RESOURCE';
 
         $manager = Mockery::mock('Doctrine\Common\Persistence\ObjectManager');
         $repo = Mockery::mock('Doctrine\Common\Persistence\ObjectRepository');
@@ -52,9 +52,9 @@ class ResourceResolvingFactoryTest extends \Codeception\TestCase\Test
         $resource = 'RESOURCE';
         $resourceType = 1;
 
-        $managerName = 'accard.manager.RESOURCE';
-        $repositoryName = 'accard.repository.RESOURCE';
-        $formName = 'accard.form.type.RESOURCE';
+        $managerName = 'dag.manager.RESOURCE';
+        $repositoryName = 'dag.repository.RESOURCE';
+        $formName = 'dag.form.type.RESOURCE';
 
         $manager = Mockery::mock('Doctrine\Common\Persistence\ObjectManager');
         $repo = Mockery::mock('Doctrine\Common\Persistence\ObjectRepository');
@@ -82,9 +82,9 @@ class ResourceResolvingFactoryTest extends \Codeception\TestCase\Test
         $resource = 'RESOURCE';
         $resourceType = 2;
 
-        $managerName = 'accard.manager.RESOURCE';
-        $repositoryName = 'accard.repository.RESOURCE';
-        $formName = 'accard.form.type.RESOURCE';
+        $managerName = 'dag.manager.RESOURCE';
+        $repositoryName = 'dag.repository.RESOURCE';
+        $formName = 'dag.form.type.RESOURCE';
 
         $manager = Mockery::mock('Doctrine\Common\Persistence\ObjectManager');
         $repo = Mockery::mock('Doctrine\Common\Persistence\ObjectRepository');

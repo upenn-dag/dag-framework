@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -14,7 +14,7 @@ use DAG\Bundle\ResourceBundle\Repository\ImportRepositoryInterface;
 use DAG\Component\Resource\Model\ImportInterface;
 
 /**
- * Accard import repository.
+ * Import repository.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

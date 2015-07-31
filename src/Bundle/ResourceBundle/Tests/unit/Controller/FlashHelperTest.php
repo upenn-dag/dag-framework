@@ -38,7 +38,7 @@ class FlashHelperTest extends \Codeception\TestCase\Test
         ;
 
         $this->translator->shouldReceive('trans')
-            ->with('accard.RESOURCE', ['%resource%' => 'RESOURCE NAME', '%resource_lower%' => 'resource name'], 'flashes')
+            ->with('dag.RESOURCE', ['%resource%' => 'RESOURCE NAME', '%resource_lower%' => 'resource name'], 'flashes')
         ;
 
         $this->config->shouldReceive('getResourceName')
@@ -46,7 +46,7 @@ class FlashHelperTest extends \Codeception\TestCase\Test
             ->andReturn('RESOURCE_NAME')
         ;
 
-        $this->flashHelper->setFlash('TYPE', 'accard.RESOURCE', array());
+        $this->flashHelper->setFlash('TYPE', 'dag.RESOURCE', array());
     }
 
     public function testFlashHelperSetFlashShouldFormatNonAccardEventsCorrectly()

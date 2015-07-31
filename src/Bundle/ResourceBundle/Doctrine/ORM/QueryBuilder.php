@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -19,8 +19,8 @@ use Doctrine\ORM\Query;
 /**
  * Doctrine ORM extended query builder.
  *
- * Used by default for all entity repositories within Accard. This assumes
- * that they use the Accard entity repository.
+ * Used by default for all entity repositories within the framework. This assumes
+ * that they use the framework entity repository.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

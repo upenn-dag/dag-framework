@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -27,37 +27,37 @@ class ObjectToIdentifierServicePass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         if ($container->hasDefinition('doctrine')) {
-            $definition = new DefinitionDecorator('accard.form.type.object_to_identifier');
+            $definition = new DefinitionDecorator('dag.form.type.object_to_identifier');
             $definition->addArgument(new Reference('doctrine'));
-            $definition->addArgument('accard_entity_to_identifier');
-            $definition->addTag('form.type', array('alias' => 'accard_entity_to_identifier'));
+            $definition->addArgument('dag_entity_to_identifier');
+            $definition->addTag('form.type', array('alias' => 'dag_entity_to_identifier'));
 
-            $container->setDefinition('accard_entity_to_identifier', $definition);
+            $container->setDefinition('dag_entity_to_identifier', $definition);
         }
 
         if ($container->hasDefinition('doctrine_mongodb')) {
-            $definition = new DefinitionDecorator('accard.form.type.object_to_identifier');
+            $definition = new DefinitionDecorator('dag.form.type.object_to_identifier');
             $definition->addArgument(new Reference('doctrine_mongodb'));
-            $definition->addArgument('accard_document_to_identifier');
-            $definition->addTag('form.type', array('alias' => 'accard_document_to_identifier'));
+            $definition->addArgument('dag_document_to_identifier');
+            $definition->addTag('form.type', array('alias' => 'dag_document_to_identifier'));
 
-            $container->setDefinition('accard_document_to_identifier', $definition);
+            $container->setDefinition('dag_document_to_identifier', $definition);
 
-            if (!$container->hasDefinition('accard_entity_to_identifier')) {
-                $container->setAlias('accard_entity_to_identifier', 'accard_document_to_identifier');
+            if (!$container->hasDefinition('dag_entity_to_identifier')) {
+                $container->setAlias('dag_entity_to_identifier', 'dag_document_to_identifier');
             }
         }
 
         if ($container->hasDefinition('doctrine_phpcr')) {
-            $definition = new DefinitionDecorator('accard.form.type.object_to_identifier');
+            $definition = new DefinitionDecorator('dag.form.type.object_to_identifier');
             $definition->addArgument(new Reference('doctrine_phpcr'));
-            $definition->addArgument('accard_phpcr_document_to_identifier');
-            $definition->addTag('form.type', array('alias' => 'accard_phpcr_document_to_identifier'));
+            $definition->addArgument('dag_phpcr_document_to_identifier');
+            $definition->addTag('form.type', array('alias' => 'dag_phpcr_document_to_identifier'));
 
-            $container->setDefinition('accard_phpcr_document_to_identifier', $definition);
+            $container->setDefinition('dag_phpcr_document_to_identifier', $definition);
 
-            if (!$container->hasDefinition('accard_entity_to_identifier')) {
-                $container->setAlias('accard_entity_to_identifier', 'accard_phpcr_document_to_identifier');
+            if (!$container->hasDefinition('dag_entity_to_identifier')) {
+                $container->setAlias('dag_entity_to_identifier', 'dag_phpcr_document_to_identifier');
             }
         }
     }

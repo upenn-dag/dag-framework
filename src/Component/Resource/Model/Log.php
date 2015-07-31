@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -13,7 +13,7 @@ namespace DAG\Component\Resource\Model;
 use DateTime;
 
 /**
- * Accard log model.
+ * Log model.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

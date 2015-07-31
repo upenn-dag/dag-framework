@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -12,23 +12,28 @@
 namespace DAG\Bundle\ResourceBundle\DependencyInjection\Driver;
 
 use DAG\Bundle\ResourceBundle\Exception\Driver\UnknownDriverException;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
+use DAG\Bundle\ResourceBundle\DAGResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
+ * DAG database driver factor.
+ *
+ * Allows for the segration of a resource from a specific type of Doctrine;
+ * whether it be the ORM, ODM or PHP-CR.
+ *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
 class DatabaseDriverFactory
 {
     public static function get(
-        $type = AccardResourceBundle::DRIVER_DOCTRINE_ORM,
+        $type = DAGResourceBundle::DRIVER_DOCTRINE_ORM,
         ContainerBuilder $container,
         $prefix,
         $resourceName,
         $templates = null
     ) {
         switch ($type) {
-            case AccardResourceBundle::DRIVER_DOCTRINE_ORM:
+            case DAGResourceBundle::DRIVER_DOCTRINE_ORM:
                 return new DoctrineORMDriver($container, $prefix, $resourceName, $templates);
             default:
                 throw new UnknownDriverException($type);

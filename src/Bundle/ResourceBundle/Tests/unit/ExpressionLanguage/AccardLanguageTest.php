@@ -29,18 +29,18 @@ class AccardLanguageTest extends \Codeception\TestCase\Test
     {
         $resourceInterface = Mockery::mock('DAG\Component\Resource\Model\ResourceInterface');
 
-        $accardLanguage = new AccardLanguage();
+        $dagLanguage = new AccardLanguage();
         $this->setExpectedException('InvalidArgumentException');
 
-        $accardLanguage->createPrototypeDescription($resourceInterface);
+        $dagLanguage->createPrototypeDescription($resourceInterface);
     }
 
     public function testAccardLanguageGetExpressionLanguageReturnsExpressionLanguage()
     {
-        $accardLanguage = new AccardLanguage();
+        $dagLanguage = new AccardLanguage();
 
         $this->assertInstanceOf(
             'DAG\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage',
-            $accardLanguage->getExpressionLanguage());
+            $dagLanguage->getExpressionLanguage());
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -28,6 +28,13 @@ abstract class FieldChoiceType extends AbstractType
     protected $subjectName;
 
     /**
+     * Prefix.
+     *
+     * @var string
+     */
+    protected $prefix;
+
+    /**
      * Field class name.
      *
      * @var string
@@ -38,11 +45,13 @@ abstract class FieldChoiceType extends AbstractType
      * Constructor.
      *
      * @param string $subjectName
+     * @param string $prefix
      * @param string $className
      */
-    public function __construct($subjectName, $className)
+    public function __construct($subjectName, $prefix, $className)
     {
         $this->subjectName = $subjectName;
+        $this->prefix = $prefix;
         $this->className = $className;
     }
 
@@ -65,6 +74,6 @@ abstract class FieldChoiceType extends AbstractType
      */
     public function getName()
     {
-        return sprintf('accard_%s_field_choice', $this->subjectName);
+        return sprintf('%s_%s_field_choice', $this->prefix, $this->subjectName);
     }
 }

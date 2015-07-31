@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -11,16 +11,15 @@
 namespace DAG\Bundle\FieldBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Accard patient bundle.
+ * DAG field bundle.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardFieldBundle extends Bundle
+class DAGFieldBundle extends Bundle
 {
     /**
      * {@inheritdoc}
@@ -35,7 +34,7 @@ class AccardFieldBundle extends Bundle
             DoctrineOrmMappingsPass::createYamlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
-                'accard_field.driver.doctrine/orm'
+                'dag_field.driver.doctrine/orm'
             )
         );
     }

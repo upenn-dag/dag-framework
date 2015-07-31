@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,12 +7,12 @@
 
 parameters:
 
-    accard.twig.extension.settings.class: DAG\Bundle\SettingsBundle\Twig\SettingsExtension
+    dag.twig.extension.settings.class: DAG\Bundle\SettingsBundle\Twig\SettingsExtension
 
 services:
 
-    accard.twig.extension.settings:
-        class: %accard.twig.extension.settings.class%
-        arguments: ['@accard.templating.helper.settings']
+    dag.twig.extension.settings:
+        class: %dag.twig.extension.settings.class%
+        arguments: ['@dag.templating.helper.settings']
         tags:
             - { name: twig.extension }

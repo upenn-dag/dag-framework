@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle\DependencyInjection;
 
 use DAG\Bundle\ResourceBundle\DependencyInjection\Driver\DatabaseDriverFactory;
@@ -32,7 +31,7 @@ abstract class AbstractResourceExtension extends Extension
     const CONFIGURE_PARAMETERS = 4;
     const CONFIGURE_VALIDATORS = 8;
 
-    protected $applicationName = 'accard';
+    protected $applicationName = 'dag';
     protected $configDirectory = '/../Resources/config';
     protected $configFiles = array('services');
 
@@ -82,14 +81,14 @@ abstract class AbstractResourceExtension extends Extension
             $this->mapValidationGroupParameters($config['validation_groups'], $container);
         }
 
-        if ($container->hasParameter('accard.config.classes')) {
-            $classes = array_merge($classes, $container->getParameter('accard.config.classes'));
+        if ($container->hasParameter('dag.config.classes')) {
+            $classes = array_merge($classes, $container->getParameter('dag.config.classes'));
         }
 
-        $container->setParameter('accard.config.classes', $classes);
+        $container->setParameter('dag.config.classes', $classes);
 
-        if (!$container->hasParameter('accard.config.inheritance')) {
-            $container->setParameter('accard.config.inheritance', array());
+        if (!$container->hasParameter('dag.config.inheritance')) {
+            $container->setParameter('dag.config.inheritance', array());
         }
 
         return array($config, $loader);
@@ -98,6 +97,7 @@ abstract class AbstractResourceExtension extends Extension
     protected function mapInheritance(array $classes, ContainerBuilder $container)
     {
         foreach ($classes as $model => $inheritanceClass) {
+            list($prefix, $model) = $this->mapResourceName($model);
             if (isset($inheritanceClass['children'])) {
                 $map = array();//array($model => $inheritanceClass['model']);
                 foreach ($inheritanceClass['children'] as $child) {
@@ -105,12 +105,12 @@ abstract class AbstractResourceExtension extends Extension
                 }
 
                 $inherited = array();
-                if ($container->hasParameter('accard.config.inheritance')) {
-                    $inherited = $container->getParameter('accard.config.inheritance');
+                if ($container->hasParameter('dag.config.inheritance')) {
+                    $inherited = $container->getParameter('dag.config.inheritance');
                 }
 
                 $inherited[$model] = $map;
-                $container->setParameter('accard.config.inheritance', $inherited);
+                $container->setParameter('dag.config.inheritance', $inherited);
             }
         }
     }
@@ -124,11 +124,12 @@ abstract class AbstractResourceExtension extends Extension
     protected function mapClassParameters(array $classes, ContainerBuilder $container)
     {
         foreach ($classes as $model => $serviceClasses) {
+            list($prefix, $model) = $this->mapResourceName($model);
             foreach ($serviceClasses as $service => $class) {
                 $container->setParameter(
                     sprintf(
                         '%s.%s.%s.class',
-                        $this->applicationName,
+                        $prefix,
                         $service === 'form' ? 'form.type' : $service,
                         $model
                     ),
@@ -147,7 +148,8 @@ abstract class AbstractResourceExtension extends Extension
     protected function mapValidationGroupParameters(array $validationGroups, ContainerBuilder $container)
     {
         foreach ($validationGroups as $model => $groups) {
-            $container->setParameter(sprintf('%s.validation_group.%s', $this->applicationName, $model), $groups);
+            list($prefix, $model) = $this->mapResourceName($model);
+            $container->setParameter(sprintf('%s.validation_group.%s', $prefix, $model), $groups);
         }
     }
 
@@ -171,11 +173,12 @@ abstract class AbstractResourceExtension extends Extension
         $container->setParameter($this->getAlias().'.driver.'.$driver, true);
 
         foreach ($config['classes'] as $model => $classes) {
+            list($prefix, $model) = $this->mapResourceName($model);
             if (array_key_exists('model', $classes)) {
                 DatabaseDriverFactory::get(
                     $driver,
                     $container,
-                    $this->applicationName,
+                    $prefix,
                     $model
                 )->load($classes);
             }
@@ -225,5 +228,22 @@ abstract class AbstractResourceExtension extends Extension
     {
         // Override if needed.
         return $config;
+    }
+
+    /**
+     * Convert a namespaced resource name to namespace/resource array.
+     *
+     * @param string $model
+     * @return array
+     */
+    protected function mapResourceName($model)
+    {
+        if (false === strpos($model, ':')) {
+            $prefix = $this->applicationName;
+        } else {
+            list($prefix, $model) = explode(':', $model);
+        }
+
+        return array($prefix, $model);
     }
 }

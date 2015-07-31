@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -66,7 +66,7 @@ class FlashHelper
      */
     private function generateFlashMessage($eventName, $params = array())
     {
-        if (false === strpos($eventName, 'accard.')) {
+        if (false === strpos($eventName, 'dag.')) {
             $message = $this->config->getFlashMessage($eventName);
             $translatedMessage = $this->translateFlashMessage($message, $params);
 
@@ -74,7 +74,7 @@ class FlashHelper
                 return $translatedMessage;
             }
 
-            return $this->translateFlashMessage('accard.resource.' . $eventName, $params);
+            return $this->translateFlashMessage('dag.resource.' . $eventName, $params);
         }
 
         return $this->translateFlashMessage($eventName, $params);

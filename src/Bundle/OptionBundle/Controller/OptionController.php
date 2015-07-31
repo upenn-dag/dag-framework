@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -31,7 +31,7 @@ class OptionController extends ResourceController
     public function redirectNameAction(Request $request, $name)
     {
         if (!$route = $this->config->getRedirectRoute(null)) {
-            throw new RouteNotFoundException('Option redirect route must be configured with _accard.redirect parameter.');
+            throw new RouteNotFoundException('Option redirect route must be configured with _dag.redirect parameter.');
         }
 
         $option = $this->getOptionProvider()->getOptionByName($name);
@@ -46,6 +46,6 @@ class OptionController extends ResourceController
      */
     private function getOptionProvider()
     {
-        return $this->get('accard.provider.option');
+        return $this->get('dag.provider.option');
     }
 }

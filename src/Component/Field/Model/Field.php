@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -15,7 +15,7 @@ use DAG\Component\Option\Model\OptionInterface;
 use DAG\Component\Option\Model\OptionOrder;
 
 /**
- * Accard field model.
+ * Field model.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

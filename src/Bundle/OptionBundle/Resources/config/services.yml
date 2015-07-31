@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,41 +7,41 @@
 
 parameters:
 
-    accard.provider.option.class: DAG\Bundle\OptionBundle\Provider\OptionProvider
-    accard.form.type.option_choice.class: DAG\Bundle\OptionBundle\Form\Type\OptionChoiceType
-    accard.form.type.option_order_choice.class: DAG\Bundle\OptionBundle\Form\Type\OptionOrderChoiceType
+    dag.provider.option.class: DAG\Bundle\OptionBundle\Provider\OptionProvider
+    dag.form.type.option_choice.class: DAG\Bundle\OptionBundle\Form\Type\OptionChoiceType
+    dag.form.type.option_order_choice.class: DAG\Bundle\OptionBundle\Form\Type\OptionOrderChoiceType
 
 services:
 
-    accard.provider.option:
-        class: %accard.provider.option.class%
+    dag.provider.option:
+        class: %dag.provider.option.class%
         arguments:
-            - @accard.repository.option
+            - @dag.repository.option
 
-    accard.form.type.option:
-        class: %accard.form.type.option.class%
+    dag.form.type.option:
+        class: %dag.form.type.option.class%
         arguments:
-            - %accard.model.option.class%
-            - %accard.validation_group.option%
+            - %dag.model.option.class%
+            - %dag.validation_group.option%
         tags:
-            - { name: form.type, alias: accard_option }
+            - { name: form.type, alias: dag_option }
 
-    accard.form.type.option_value:
-        class: %accard.form.type.option_value.class%
+    dag.form.type.option_value:
+        class: %dag.form.type.option_value.class%
         arguments:
-            - %accard.model.option_value.class%
-            - %accard.validation_group.option_value%
+            - %dag.model.option_value.class%
+            - %dag.validation_group.option_value%
         tags:
-            - { name: form.type, alias: accard_option_value }
+            - { name: form.type, alias: dag_option_value }
 
-    accard.form.type.option_choice:
-        class: %accard.form.type.option_choice.class%
+    dag.form.type.option_choice:
+        class: %dag.form.type.option_choice.class%
         arguments:
-            - %accard.model.option.class%
+            - %dag.model.option.class%
         tags:
-            - { name: form.type, alias: accard_option_choice }
+            - { name: form.type, alias: dag_option_choice }
 
-    accard.form.type.option_order_choice:
-        class: %accard.form.type.option_order_choice.class%
+    dag.form.type.option_order_choice:
+        class: %dag.form.type.option_order_choice.class%
         tags:
-            - { name: form.type, alias: accard_option_order_choice }
+            - { name: form.type, alias: dag_option_order_choice }

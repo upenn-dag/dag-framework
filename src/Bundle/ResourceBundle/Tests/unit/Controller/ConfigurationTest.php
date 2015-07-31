@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -53,7 +53,7 @@ class ConfigurationTest extends \Codeception\TestCase\Test
     public function testConfigurationParsesParametersFromRequest()
     {
         $params = array('key' => 'value');
-        $this->request->attributes->replace(array('_accard' => $params));
+        $this->request->attributes->replace(array('_dag' => $params));
         $this->config->setRequest($this->request);
         $this->assertAttributeSame($params, 'parameters', $this->config);
         $this->assertSame($params, $this->config->getParameters());

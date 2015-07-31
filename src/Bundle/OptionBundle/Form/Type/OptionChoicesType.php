@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -38,7 +38,7 @@ class OptionChoicesType extends AbstractType
      */
     public function getName()
     {
-        return 'accard_option_choices';
+        return 'dag_option_choices';
     }
 
     /**
@@ -46,6 +46,6 @@ class OptionChoicesType extends AbstractType
      */
     public function getParent()
     {
-        return 'accard_option_choice';
+        return 'dag_option_choice';
     }
 }

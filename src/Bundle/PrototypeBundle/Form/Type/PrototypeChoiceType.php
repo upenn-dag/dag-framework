@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use DAG\Component\Prototype\Provider\PrototypeProviderInterface;
 
 /**
- * Accard prototype choice type.
+ * Prototype choice form type.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -30,6 +30,13 @@ class PrototypeChoiceType extends AbstractType
     protected $subjectName;
 
     /**
+     * Prefix.
+     *
+     * @var string
+     */
+    protected $prefix;
+
+    /**
      * Prototype provider.
      *
      * @var PrototypeProviderInterface
@@ -41,11 +48,13 @@ class PrototypeChoiceType extends AbstractType
      * Constructor.
      *
      * @param string $subjectName
+     * @param string $prefix
      * @param PrototypeProviderInterface $provider
      */
-    public function __construct($subjectName, PrototypeProviderInterface $provider)
+    public function __construct($subjectName, $prefix, PrototypeProviderInterface $provider)
     {
         $this->subjectName = $subjectName;
+        $this->prefix = $prefix;
         $this->provider = $provider;
     }
 
@@ -76,6 +85,6 @@ class PrototypeChoiceType extends AbstractType
      */
     public function getName()
     {
-        return sprintf('accard_%s_prototype_choice', $this->subjectName);
+        return sprintf('%s_%s_prototype_choice', $this->prefix, $this->subjectName);
     }
 }

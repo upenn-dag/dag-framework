@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -100,7 +100,7 @@ class Configuration
     /**
      * Set request.
      *
-     * Additionally, this processes the _accard route namespace and switches any
+     * Additionally, this processes the _dag route namespace and switches any
      * expression (as set in {@see ParametersParser}) with dynamic values.
      *
      * @param Request $request
@@ -108,7 +108,7 @@ class Configuration
     public function setRequest(Request $request)
     {
         $this->request = $request;
-        $parameters = $request->attributes->get('_accard', array());
+        $parameters = $request->attributes->get('_dag', array());
         $this->parser->parse($parameters, $request);
 
         $this->setParameters($parameters);

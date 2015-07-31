@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -56,6 +56,6 @@ class OptionHelper extends Helper
      */
     public function getName()
     {
-        return 'accard_option';
+        return 'dag_option';
     }
 }

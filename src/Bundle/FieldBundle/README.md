@@ -7,7 +7,7 @@ Accard
 ------
 
 Modern medical patient repository implementation in PHP and Symfony2. See
-[the project homepage](http://accard.med.upenn.edu) for more details.
+[the project homepage](http://dag.med.upenn.edu) for more details.
 
 Testing
 -------
@@ -26,7 +26,7 @@ $ phpsec run -f pretty
 Documentation
 -------------
 
-Visit the [Accard documentation](http://accard.med.upenn.edu/docs) for further
+Visit the [Accard documentation](http://dag.med.upenn.edu/docs) for further
 instruction and explainations.
 
 License

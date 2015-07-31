@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,12 +7,12 @@
 
 parameters:
 
-    accard.templating.helper.settings.class: DAG\Bundle\SettingsBundle\Templating\Helper\SettingsHelper
+    dag.templating.helper.settings.class: DAG\Bundle\SettingsBundle\Templating\Helper\SettingsHelper
 
 services:
 
-    accard.templating.helper.settings:
-        class: %accard.templating.helper.settings.class%
-        arguments: ['@accard.settings.manager']
+    dag.templating.helper.settings:
+        class: %dag.templating.helper.settings.class%
+        arguments: ['@dag.settings.manager']
         tags:
-            - { name: templating.helper, alias: accard_settings }
+            - { name: templating.helper, alias: dag_settings }

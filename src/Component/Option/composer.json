@@ -1,9 +1,9 @@
 {
     "name": "dag/option",
     "type": "library",
-    "description": "Accard option component",
+    "description": "DAG option component",
     "keywords": ["option"],
-    "homepage": "http://accard.med.upenn.edu",
+    "homepage": "http://dag.med.upenn.edu",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",

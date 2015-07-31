@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -38,7 +38,7 @@ class OptionValueTest extends \Codeception\TestCase\Test
         );
     }
 
-    public function testOptionValueIsAccardResource()
+    public function testOptionValueIsDAGResource()
     {
         $this->assertInstanceOf(
             'DAG\Component\Resource\Model\ResourceInterface',

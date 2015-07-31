@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -17,11 +17,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use DAG\Bundle\ResourceBundle\DependencyInjection\Driver\DatabaseDriverFactory;
 
 /**
- * Resource system extension.
+ * DAG resource bundle extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardResourceExtension extends AbstractResourceExtension
+class DAGResourceExtension extends AbstractResourceExtension
 {
     /**
      * {@inheritdoc}
@@ -41,17 +41,6 @@ class AccardResourceExtension extends AbstractResourceExtension
             'DAG\\Component\\Resource\\Repository\\RepositoryInterface',
             'DAG\\Component\\Resource\\Model\\UserInterface',
             'DAG\\Component\\Resource\\Model\\User',
-
         ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function process(array $config, ContainerBuilder $container)
-    {
-        $container->setParameter('accard.import.signals', $config['import']['signals']);
-
-        return $config;
     }
 }

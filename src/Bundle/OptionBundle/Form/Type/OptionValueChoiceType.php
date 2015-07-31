@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -95,7 +95,7 @@ class OptionValueChoiceType extends AbstractType
             ->setDefaults(array(
                 'class' => $class,
                 'choices' => $choices,
-                'empty_value' => 'accard.form.choose',
+                'empty_value' => 'dag.option.form.choose',
             ))
         ;
     }
@@ -115,6 +115,6 @@ class OptionValueChoiceType extends AbstractType
     {
         $normalizedName = str_replace('-', '_', $this->option->getName());
 
-        return sprintf('accard_%s_option_value', $normalizedName);
+        return sprintf('dag_%s_option_value', $normalizedName);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -35,7 +35,7 @@ class FieldTest extends \Codeception\TestCase\Test
         );
     }
 
-    public function testFieldIsAccardResource()
+    public function testFieldIsDAGResource()
     {
         $this->assertInstanceOf(
             'DAG\Component\Resource\Model\ResourceInterface',

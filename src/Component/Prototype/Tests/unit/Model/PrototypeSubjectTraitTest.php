@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -14,7 +14,7 @@ use DAG\Component\Prototype\Test\Stub\PrototypeSubject;
 use DAG\Component\Prototype\Test\PrototypeTest;
 
 /**
- * Accard prototype trait tests.
+ * Prototype trait tests.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */

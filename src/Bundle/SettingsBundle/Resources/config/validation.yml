@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -9,17 +9,17 @@ DAG\Bundle\SettingsBundle\Model\Parameter:
     properties:
         namespace:
             - NotBlank:
-                message: accard.settings.parameter.namespace.not_blank
+                message: dag.settings.parameter.namespace.not_blank
             - Length:
                 min: 1
-                minMessage: accard.settings.parameter.namespace.min_length
+                minMessage: dag.settings.parameter.namespace.min_length
                 max: 120
-                maxMessage: accard.settings.parameter.namespace.max_length
+                maxMessage: dag.settings.parameter.namespace.max_length
         name:
             - NotBlank:
-                message: accard.settings.parameter.name.not_blank
+                message: dag.settings.parameter.name.not_blank
             - Length:
                 min: 1
-                minMessage: accard.settings.parameter.name.min_length
+                minMessage: dag.settings.parameter.name.min_length
                 max: 120
-                maxMessage: accard.settings.parameter.name.max_length
+                maxMessage: dag.settings.parameter.name.max_length

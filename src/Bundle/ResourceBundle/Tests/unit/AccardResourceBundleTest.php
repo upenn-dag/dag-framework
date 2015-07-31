@@ -1,11 +1,15 @@
 <?php
-namespace DAGTest\Bundle\ResourceBundle;
 
 /**
- * Accard Resource Bundle Test
+ * This file is part of the Accard package.
  *
- * @author Dylan Pierce <piercedy@upenn.edu>
+ * (c) University of Pennsylvania
+ *
+ * For the full copyright and license information, please view the
+ * LICENSE file that was distributed with this source code.
  */
+namespace DAGTest\Bundle\ResourceBundle;
+
 use Mockery;
 use DAG\Bundle\ResourceBundle\AccardResourceBundle;
 use DAG\Bundle\ResourceBundle\DependencyInjection\Compiler\ObjectToIdentifierServicePass;
@@ -18,7 +22,6 @@ class AccardResourceBundleTest extends \Codeception\TestCase\Test
         $this->bundle = new AccardResourceBundle();
     }
 
-    // tests
     public function testBuildRegistersExpectedNumberOfBundles()
     {
         $container = Mockery::mock('Symfony\Component\DependencyInjection\ContainerBuilder')
@@ -28,5 +31,4 @@ class AccardResourceBundleTest extends \Codeception\TestCase\Test
 
         $this->bundle->build($container);
     }
-
 }

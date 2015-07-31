@@ -1,9 +1,9 @@
 {
     "name": "dag/settings-bundle",
     "type": "symfony-bundle",
-    "description": "Accard settings bundle",
-    "keywords": ["accard", "settings"],
-    "homepage": "http://accard.med.upenn.edu",
+    "description": "DAG settings bundle",
+    "keywords": ["dag", "settings"],
+    "homepage": "http://dag.med.upenn.edu",
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [

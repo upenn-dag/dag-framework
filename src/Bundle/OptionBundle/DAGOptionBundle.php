@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -12,16 +12,15 @@ namespace DAG\Bundle\OptionBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use DAG\Bundle\ResourceBundle\DependencyInjection\Compiler\ResolveDoctrineTargetEntitiesPass;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Accard option bundle.
+ * DAG option bundle.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardOptionBundle extends Bundle
+class DAGOptionBundle extends Bundle
 {
     /**
      * {@inheritdoc}
@@ -29,11 +28,11 @@ class AccardOptionBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $interfaces = array(
-            'DAG\Component\Option\Model\OptionInterface' => 'accard.model.option.class',
-            'DAG\Component\Option\Model\OptionValueInterface' => 'accard.model.option_value.class',
+            'DAG\Component\Option\Model\OptionInterface' => 'dag.model.option.class',
+            'DAG\Component\Option\Model\OptionValueInterface' => 'dag.model.option_value.class',
         );
 
-        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('accard_option', $interfaces));
+        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('dag_option', $interfaces));
 
         $mappings = array(
             realpath(__DIR__ . '/Resources/config/doctrine/model') => 'DAG\Component\Option\Model',
@@ -43,7 +42,7 @@ class AccardOptionBundle extends Bundle
             DoctrineOrmMappingsPass::createYamlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
-                'accard_option.driver.doctrine/orm'
+                'dag_option.driver.doctrine/orm'
             )
         );
     }

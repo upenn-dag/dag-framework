@@ -1,9 +1,9 @@
 {
     "name": "dag/prototype-bundle",
     "type": "symfony-bundle",
-    "description": "Accard prototype bundle",
+    "description": "DAG prototype bundle",
     "keywords": ["prototype"],
-    "homepage": "http://accard.med.upenn.edu",
+    "homepage": "http://dag.med.upenn.edu",
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
@@ -28,10 +28,6 @@
     "require-dev": {
         "codeception/codeception":          "dev-master",
         "codeception/mockery-module":       "dev-master"
-    },
-    "suggest": {
-        "dag/web-bundle": "Provides the default web interface",
-        "dag/fixtures-bundle": "Provides the default Accard fixtures"
     },
     "autoload": {
         "psr-4": { "DAG\\Bundle\\PrototypeBundle\\": "" }

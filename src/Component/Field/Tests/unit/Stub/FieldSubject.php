@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -14,7 +14,7 @@ use DAG\Component\Field\Model\FieldSubjectTrait;
 use DAG\Component\Field\Model\FieldSubjectInterface;
 
 /**
- * Accard field subject stub.
+ * Field subject stub.
  *
  * This stubs job is ONLY to create a base representation of a field subject
  * so we're able to test. At some point, I think we should move this into the

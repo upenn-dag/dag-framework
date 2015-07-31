@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
@@ -21,11 +20,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Resource bundle.
+ * DAG resource bundle.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardResourceBundle extends Bundle
+class DAGResourceBundle extends Bundle
 {
     // Bundle driver list.
     const DRIVER_DOCTRINE_ORM         = 'doctrine/orm';
@@ -38,8 +37,7 @@ class AccardResourceBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $interfaces = array(
-            'DAG\Component\Resource\Model\ImportInterface' => 'accard.model.import.class',
-            'DAG\Component\Resource\Model\LogInterface' => 'accard.model.log.class',
+            'DAG\Component\Resource\Model\LogInterface' => 'dag.model.log.class',
         );
 
         $mappings = array(
@@ -50,12 +48,12 @@ class AccardResourceBundle extends Bundle
         $container->addCompilerPass(new RegisterImporterPass());
         $container->addCompilerPass(new RegisterImporterManagerPass());
         $container->addCompilerPass(new RegisterExpressionLanguagePass());
-        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('accard_resource', $interfaces));
+        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('dag_resource', $interfaces));
         $container->addCompilerPass(
             DoctrineOrmMappingsPass::createYamlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
-                'accard_resource.driver.doctrine/orm'
+                'dag_resource.driver.doctrine/orm'
             )
         );
     }

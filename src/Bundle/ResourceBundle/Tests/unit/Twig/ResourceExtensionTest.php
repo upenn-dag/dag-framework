@@ -29,7 +29,7 @@ class ResourceExtensionTest extends \Codeception\TestCase\Test
 
     public function testResourceExpressionGetGlobalsReturnsImportSignals()
     {
-        $this->assertEquals(['accard_import_signals' => $this->importSignals], $this->twig->getGlobals());
+        $this->assertEquals(['dag_import_signals' => $this->importSignals], $this->twig->getGlobals());
     }
 
     public function testResourceExpressionImportSignalsAreRetrievable()
@@ -72,6 +72,6 @@ class ResourceExtensionTest extends \Codeception\TestCase\Test
 
     public function testResourceExpressionGetNameReturnsCorrectString()
     {
-        $this->assertEquals('accard_resource', $this->twig->getName());
+        $this->assertEquals('dag_resource', $this->twig->getName());
     }
 }

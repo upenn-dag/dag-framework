@@ -1,9 +1,9 @@
 {
     "name": "dag/prototype",
     "type": "library",
-    "description": "Accard prototype component",
-    "keywords": ["accard", "prototype"],
-    "homepage": "http://accard.med.upenn.edu",
+    "description": "DAG prototype component",
+    "keywords": ["dag", "prototype"],
+    "homepage": "http://dag.med.upenn.edu",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -11,16 +11,15 @@
 namespace DAG\Bundle\PrototypeBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Accard prototype bundle.
+ * DAG prototype bundle.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardPrototypeBundle extends Bundle
+class DAGPrototypeBundle extends Bundle
 {
     /**
      * {@inheritdoc}
@@ -35,7 +34,7 @@ class AccardPrototypeBundle extends Bundle
             DoctrineOrmMappingsPass::createYamlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
-                'accard_prototype.driver.doctrine/orm'
+                'dag_prototype.driver.doctrine/orm'
             )
         );
     }

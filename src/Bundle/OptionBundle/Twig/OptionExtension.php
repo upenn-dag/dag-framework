@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -16,7 +16,7 @@ use DAG\Bundle\OptionBundle\Templating\Helper\OptionHelper;
 use DAG\Component\Option\Model\OptionInterface;
 
 /**
- * Accard option Twig extension.
+ * DAG option Twig extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -46,7 +46,7 @@ class OptionExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('accard_option', array($this, 'getOption')),
+            new Twig_SimpleFunction('dag_option', array($this, 'getOption')),
         );
     }
 
@@ -66,6 +66,6 @@ class OptionExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'accard_option';
+        return 'dag_option';
     }
 }

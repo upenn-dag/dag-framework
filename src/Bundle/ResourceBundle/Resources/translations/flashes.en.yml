@@ -1,4 +1,4 @@
-accard:
+dag:
     resource:
         create: %resource% has been successfully created.
         update: %resource% has been successfully updated.

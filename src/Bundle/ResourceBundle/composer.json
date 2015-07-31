@@ -1,9 +1,9 @@
 {
     "name": "dag/resource-bundle",
     "type": "symfony-bundle",
-    "description": "Accard resource bundle",
-    "keywords": ["resource", "storage", "persistence", "accard"],
-    "homepage": "http://accard.med.upenn.edu",
+    "description": "DAG resource bundle",
+    "keywords": ["resource", "storage", "persistence", "dag"],
+    "homepage": "http://dag.med.upenn.edu",
     "license": "MIT",
     "require": {
         "php": ">=5.3.3",

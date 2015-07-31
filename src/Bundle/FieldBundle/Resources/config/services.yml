@@ -1,4 +1,4 @@
-# This file is part of the Accard package.
+# This file is part of The DAG Framework package.
 #
 # (c) University of Pennsylvania
 #
@@ -7,12 +7,12 @@
 
 parameters:
 
-    accard.event_subscriber.field.load_orm_metadata.class: DAG\Bundle\FieldBundle\EventListener\LoadORMMetadataSubscriber
+    dag.event_subscriber.field.load_orm_metadata.class: DAG\Bundle\FieldBundle\EventListener\LoadORMMetadataSubscriber
 
 services:
 
-    accard.event_subscriber.field.load_orm_metadata:
-        class: %accard.event_subscriber.field.load_orm_metadata.class%
-        arguments: ["%accard.field.subjects%"]
+    dag.event_subscriber.field.load_orm_metadata:
+        class: %dag.event_subscriber.field.load_orm_metadata.class%
+        arguments: ["%dag.field.subjects%"]
         tags:
             - { name: doctrine.event_subscriber }

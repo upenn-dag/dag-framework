@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
  * For the full copyright and license information, please view the
  * LICENSE file that was distributed with this source code.
  */
-
 namespace DAG\Bundle\ResourceBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -16,10 +15,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This class contains the configuration information for the bundle.
- *
- * This information is solely responsible for how the different configuration
- * sections are normalized, and merged.
+ * DAG resource bundle configuration.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -31,20 +27,12 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('accard_resource');
+        $rootNode = $treeBuilder->root('dag_resource');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('driver')->isRequired()->cannotBeEmpty()->end()
-                ->arrayNode('import')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->arrayNode('signals')
-                            ->prototype('scalar')->end()
-                            ->defaultValue(array())
-                    ->end()
-                ->end()
             ->end()
         ;
 
@@ -66,13 +54,9 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('validation_groups')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('import')
-                            ->prototype('scalar')->end()
-                            ->defaultValue(array('accard'))
-                        ->end()
                         ->arrayNode('log')
                             ->prototype('scalar')->end()
-                            ->defaultValue(array('accard'))
+                            ->defaultValue(array('dag'))
                         ->end()
                     ->end()
                 ->end()
@@ -92,15 +76,6 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('classes')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('import')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('model')->defaultValue('DAG\Component\Resource\Model\Import')->end()
-                                ->scalarNode('controller')->defaultValue('DAG\Bundle\ResourceBundle\Import\ImportController')->end()
-                                ->scalarNode('repository')->defaultValue('DAG\Bundle\ResourceBundle\Doctrine\ORM\ImportRepository')->end()
-                                ->scalarNode('form')->end()
-                            ->end()
-                        ->end()
                         ->arrayNode('log')
                             ->addDefaultsIfNotSet()
                             ->children()

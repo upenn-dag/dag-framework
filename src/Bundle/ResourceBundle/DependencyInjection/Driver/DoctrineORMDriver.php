@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -11,11 +11,15 @@
 
 namespace DAG\Bundle\ResourceBundle\DependencyInjection\Driver;
 
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
+use DAG\Bundle\ResourceBundle\DAGResourceBundle;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
+ * Doctrine ORM database driver.
+ *
+ * Implementation of a resource repository for Doctrine ORM.
+ *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
 class DoctrineORMDriver extends AbstractDatabaseDriver
@@ -25,7 +29,7 @@ class DoctrineORMDriver extends AbstractDatabaseDriver
      */
     public function getSupportedDriver()
     {
-        return AccardResourceBundle::DRIVER_DOCTRINE_ORM;
+        return DAGResourceBundle::DRIVER_DOCTRINE_ORM;
     }
 
     /**

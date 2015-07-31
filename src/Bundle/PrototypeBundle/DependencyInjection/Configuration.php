@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -15,7 +15,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Accard prototype bundle configuration.
+ * DAG prototype bundle configuration.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('accard_prototype');
+        $rootNode = $treeBuilder->root('dag_prototype');
 
         $rootNode
             ->addDefaultsIfNotSet()
@@ -57,7 +57,7 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->arrayNode('prototype')
                                 ->prototype('scalar')->end()
-                                ->defaultValue(array('accard'))
+                                ->defaultValue(array('dag'))
                             ->end()
                         ->end()
                     ->end()

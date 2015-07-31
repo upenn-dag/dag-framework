@@ -1,9 +1,9 @@
 {
     "name": "dag/field",
     "type": "library",
-    "description": "Accard field component",
+    "description": "DAG field component",
     "keywords": ["dag", "field"],
-    "homepage": "http://accard.med.upenn.edu",
+    "homepage": "http://dag.med.upenn.edu",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",

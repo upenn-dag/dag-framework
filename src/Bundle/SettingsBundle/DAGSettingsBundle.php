@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -14,16 +14,15 @@ use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappi
 use DAG\Bundle\SettingsBundle\DependencyInjection\Compiler\RegisterSchemasPass;
 use DAG\Bundle\SettingsBundle\DependencyInjection\Compiler\RegisterSchemaExtensionsPass;
 use DAG\Bundle\ResourceBundle\DependencyInjection\Compiler\ResolveDoctrineTargetEntitiesPass;
-use DAG\Bundle\ResourceBundle\AccardResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Accard settings bundle definition.
+ * DAG settings bundle definition.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
-class AccardSettingsBundle extends Bundle
+class DAGSettingsBundle extends Bundle
 {
     /**
      * {@inheritdoc}
@@ -31,10 +30,10 @@ class AccardSettingsBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $interfaces = array(
-            'DAG\Bundle\SettingsBundle\Model\ParameterInterface' => 'accard.model.parameter.class',
+            'DAG\Bundle\SettingsBundle\Model\ParameterInterface' => 'dag.model.parameter.class',
         );
 
-        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('accard_settings', $interfaces));
+        $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('dag_settings', $interfaces));
         $container->addCompilerPass(new RegisterSchemasPass());
         $container->addCompilerPass(new RegisterSchemaExtensionsPass());
 
@@ -46,7 +45,7 @@ class AccardSettingsBundle extends Bundle
             DoctrineOrmMappingsPass::createYamlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
-                'accard_settings.driver.doctrine/orm'
+                'dag_settings.driver.doctrine/orm'
             )
         );
     }

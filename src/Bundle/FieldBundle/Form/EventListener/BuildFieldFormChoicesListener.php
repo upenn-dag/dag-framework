@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -62,7 +62,7 @@ class BuildFieldFormChoicesListener implements EventSubscriberInterface
         $type = $field->getType();
 
         if (FieldTypes::CHOICE === $type) {
-            $event->getForm()->add('option', 'accard_option_choice', array(
+            $event->getForm()->add('option', 'dag_option_choice', array(
                 'required' => false,
             ));
         }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
- * Accard resource Twig extension.
+ * Resource Twig extension.
  *
  * @author Frank Bardon Jr. <bardonf@upenn.edu>
  */
@@ -36,7 +36,7 @@ class ResourceExtension extends \Twig_Extension
     /**
      * @var array
      */
-    private $accardRouteParams = array();
+    private $dagRouteParams = array();
 
     /**
      * @var Request
@@ -57,14 +57,12 @@ class ResourceExtension extends \Twig_Extension
      * Constructor.
      *
      * @param RouterInterface $router
-     * @param array $importSignals
      * @param string $paginateTemplate
      * @param string $sortingTemplate
      */
-    public function __construct(RouterInterface $router, array $importSignals, $paginateTemplate, $sortingTemplate)
+    public function __construct(RouterInterface $router, $paginateTemplate, $sortingTemplate)
     {
         $this->router = $router;
-        $this->importSignals = $importSignals;
         $this->paginateTemplate = $paginateTemplate;
         $this->sortingTemplate = $sortingTemplate;
     }
@@ -76,32 +74,16 @@ class ResourceExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction(
-                'accard_resource_sort',
+                'dag_resource_sort',
                 array($this, 'renderSortingLink'),
                 array('needs_environment' => true, 'is_safe' => array('html'))
             ),
             new \Twig_SimpleFunction(
-                'accard_resource_paginate',
+                'dag_resource_paginate',
                 array($this, 'renderPaginateSelect'),
                 array('needs_environment' => true, 'is_safe' => array('html'))
             )
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getGlobals()
-    {
-        return array('accard_import_signals' => $this->importSignals);
-    }
-
-    /**
-     * @return array
-     */
-    public function getImportSignals()
-    {
-        return $this->importSignals;
     }
 
     /**
@@ -116,8 +98,8 @@ class ResourceExtension extends \Twig_Extension
         $this->request = $event->getRequest();
 
         $routeParams = $this->request->attributes->get('_route_params', array());
-        if (array_key_exists('_accard', $routeParams)) {
-            $this->accardRouteParams = $routeParams['_accard'];
+        if (array_key_exists('_dag', $routeParams)) {
+            $this->dagRouteParams = $routeParams['_dag'];
         }
     }
 
@@ -132,7 +114,7 @@ class ResourceExtension extends \Twig_Extension
      */
     public function renderSortingLink(\Twig_Environment $twig, $property, $label = null, $order = 'asc', array $options = array())
     {
-        if (array_key_exists('sortable', $this->accardRouteParams) && !$this->accardRouteParams['sortable']) {
+        if (array_key_exists('sortable', $this->dagRouteParams) && !$this->dagRouteParams['sortable']) {
             return $label;
         }
 
@@ -148,8 +130,8 @@ class ResourceExtension extends \Twig_Extension
             }
 
             $sorting = array('id' => 'asc');
-            if (isset($this->accardRouteParams['sorting'])) {
-                $sorting = $this->accardRouteParams['sorting'];
+            if (isset($this->dagRouteParams['sorting'])) {
+                $sorting = $this->dagRouteParams['sorting'];
             }
         }
 
@@ -179,7 +161,7 @@ class ResourceExtension extends \Twig_Extension
      */
     public function renderPaginateSelect(\Twig_Environment $twig, Pagerfanta $paginator, array $limitOptions, array $options = array())
     {
-        if (array_key_exists('paginate', $this->accardRouteParams) && is_integer($this->accardRouteParams['paginate'])) {
+        if (array_key_exists('paginate', $this->dagRouteParams) && is_integer($this->dagRouteParams['paginate'])) {
             $options = $this->getOptions($options, $this->paginateTemplate);
             $paginateName = 'limit';
 
@@ -214,7 +196,7 @@ class ResourceExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'accard_resource';
+        return 'dag_resource';
     }
 
     /**

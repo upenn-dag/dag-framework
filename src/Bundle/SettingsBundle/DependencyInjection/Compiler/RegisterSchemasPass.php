@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Accard package.
+ * This file is part of The DAG Framework package.
  *
  * (c) University of Pennsylvania
  *
@@ -27,16 +27,16 @@ class RegisterSchemasPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('accard.settings.schema_registry')) {
+        if (!$container->hasDefinition('dag.settings.schema_registry')) {
             return;
         }
 
-        $registry = $container->getDefinition('accard.settings.schema_registry');
+        $registry = $container->getDefinition('dag.settings.schema_registry');
 
-        foreach ($container->findTaggedServiceIds('accard.settings_schema') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('dag.settings_schema') as $id => $attributes) {
             if (!array_key_exists('namespace', $attributes[0])) {
                 throw new InvalidArgumentException(sprintf(
-                    'Service "%s" must define the "namespace" attribute on "accard.settings_schema" tags.',
+                    'Service "%s" must define the "namespace" attribute on "dag.settings_schema" tags.',
                     $id
                 ));
             }
