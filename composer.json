@@ -29,7 +29,7 @@
         "doctrine/orm":                          "~2.4.0",
         "doctrine/doctrine-bundle":              "~1.4",
         "doctrine/doctrine-cache-bundle":        "~1.0",
-        "doctrine/doctrine-migrations-bundle":   "2.1.*@dev",
+        "doctrine/doctrine-migrations-bundle":   "~1.0",
         "twig/extensions":                       "~1.2",
         "friendsofsymfony/rest-bundle":          "~1.5",
         "jms/serializer-bundle":                 "0.13.*",
