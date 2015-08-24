@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="dag.controller.configuration_factory.class">DAG\Bundle\ResourceBundle\Controller\ConfigurationFactory</parameter>
+    <parameter key="dag.controller.parameters_parser.class">DAG\Bundle\ResourceBundle\Controller\ParametersParser</parameter>
+    <parameter key="dag.expression_language.class">DAG\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage</parameter>
+    <parameter key="dag.form.type.object_to_identifier.class">DAG\Bundle\ResourceBundle\Form\Type\ObjectToIdentifierType</parameter>
+    <parameter key="dag.event_subscriber.load_orm_metadata.class">DAG\Bundle\ResourceBundle\EventListener\LoadORMMetadataSubscriber</parameter>
+    <parameter key="dag.event_subscriber.kernel_controller.class">DAG\Bundle\ResourceBundle\EventListener\KernelControllerSubscriber</parameter>
+    <parameter key="jms_serializer.identifier_handler.class">DAG\Bundle\ResourceBundle\Serializer\IdentifierHandler</parameter>
+    <parameter key="jms_serializer.property_handler.class">DAG\Bundle\ResourceBundle\Serializer\PropertyHandler</parameter>
+    <parameter key="dag.expression_language.extension.resource.class">DAG\Bundle\ResourceBundle\ExpressionLanguage\ResourceExtension</parameter>
+  </parameters>
+  <services>
+    <service id="dag.expression_language.extension.resource" class="%dag.expression_language.extension.resource.class%">
+      <tag name="dag.expression_language_extension"/>
+    </service>
+    <service id="dag.controller.configuration_factory" class="%dag.controller.configuration_factory.class%">
+      <argument type="service" id="dag.controller.parameters_parser"/>
+    </service>
+    <service id="dag.controller.parameters_parser" class="%dag.controller.parameters_parser.class%">
+      <argument type="service" id="dag.expression_language"/>
+    </service>
+    <service id="dag.expression_language" class="%dag.expression_language.class%">
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="dag.event_subscriber.load_orm_metadata" class="%dag.event_subscriber.load_orm_metadata.class%">
+      <tag name="doctrine.event_subscriber"/>
+      <argument>%dag.config.classes%</argument>
+      <argument>%dag.config.inheritance%</argument>
+    </service>
+    <service id="dag.event_subscriber.kernel_controller" class="%dag.event_subscriber.kernel_controller.class%">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="dag.expression_language"/>
+    </service>
+    <service id="dag.form.type.object_to_identifier" class="%dag.form.type.object_to_identifier.class%"/>
+    <service id="jms_serializer.identifier_handler" class="%jms_serializer.identifier_handler.class%">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.property_handler" class="%jms_serializer.property_handler.class%">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+  </services>
+</container>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="dag.twig.extension.resource.class">DAG\Bundle\ResourceBundle\Twig\ResourceExtension</parameter>
+    <parameter key="dag.twig.extension.resource.pagination_template">DAGResourceBundle:Twig:paginate.html.twig</parameter>
+    <parameter key="dag.twig.extension.resource.sorting_template">DAGResourceBundle:Twig:sorting.html.twig</parameter>
+  </parameters>
+  <services>
+    <service id="dag.twig.extension.resource" class="%dag.twig.extension.resource.class%">
+      <tag name="twig.extension"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="fetchRequest"/>
+      <argument type="service" id="router"/>
+      <argument>%dag.twig.extension.resource.pagination_template%</argument>
+      <argument>%dag.twig.extension.resource.sorting_template%</argument>
+    </service>
+  </services>
+</container>

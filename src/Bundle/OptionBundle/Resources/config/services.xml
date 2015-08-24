@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="dag.provider.option.class">DAG\Bundle\OptionBundle\Provider\OptionProvider</parameter>
+    <parameter key="dag.form.type.option_choice.class">DAG\Bundle\OptionBundle\Form\Type\OptionChoiceType</parameter>
+    <parameter key="dag.form.type.option_order_choice.class">DAG\Bundle\OptionBundle\Form\Type\OptionOrderChoiceType</parameter>
+  </parameters>
+  <services>
+    <service id="dag.provider.option" class="%dag.provider.option.class%">
+      <argument type="service" id="dag.repository.option"/>
+    </service>
+    <service id="dag.form.type.option" class="%dag.form.type.option.class%">
+      <tag name="form.type" alias="dag_option"/>
+      <argument>%dag.model.option.class%</argument>
+      <argument>%dag.validation_group.option%</argument>
+    </service>
+    <service id="dag.form.type.option_value" class="%dag.form.type.option_value.class%">
+      <tag name="form.type" alias="dag_option_value"/>
+      <argument>%dag.model.option_value.class%</argument>
+      <argument>%dag.validation_group.option_value%</argument>
+    </service>
+    <service id="dag.form.type.option_choice" class="%dag.form.type.option_choice.class%">
+      <tag name="form.type" alias="dag_option_choice"/>
+      <argument>%dag.model.option.class%</argument>
+    </service>
+    <service id="dag.form.type.option_order_choice" class="%dag.form.type.option_order_choice.class%">
+      <tag name="form.type" alias="dag_option_order_choice"/>
+    </service>
+  </services>
+</container>

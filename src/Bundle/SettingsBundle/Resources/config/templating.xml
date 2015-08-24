@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="dag.templating.helper.settings.class">DAG\Bundle\SettingsBundle\Templating\Helper\SettingsHelper</parameter>
+  </parameters>
+  <services>
+    <service id="dag.templating.helper.settings" class="%dag.templating.helper.settings.class%">
+      <tag name="templating.helper" alias="dag_settings"/>
+      <argument type="service" id="dag.settings.manager"/>
+    </service>
+  </services>
+</container>
