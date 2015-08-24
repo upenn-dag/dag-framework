@@ -50,7 +50,7 @@ class DAGResourceBundle extends Bundle
         $container->addCompilerPass(new RegisterExpressionLanguagePass());
         $container->addCompilerPass(new ResolveDoctrineTargetEntitiesPass('dag_resource', $interfaces));
         $container->addCompilerPass(
-            DoctrineOrmMappingsPass::createYamlMappingDriver(
+            DoctrineOrmMappingsPass::createXmlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
                 'dag_resource.driver.doctrine/orm'

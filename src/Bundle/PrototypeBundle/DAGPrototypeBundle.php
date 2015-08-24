@@ -31,7 +31,7 @@ class DAGPrototypeBundle extends Bundle
         );
 
         $container->addCompilerPass(
-            DoctrineOrmMappingsPass::createYamlMappingDriver(
+            DoctrineOrmMappingsPass::createXmlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
                 'dag_prototype.driver.doctrine/orm'

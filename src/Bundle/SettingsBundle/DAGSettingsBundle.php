@@ -42,7 +42,7 @@ class DAGSettingsBundle extends Bundle
         );
 
         $container->addCompilerPass(
-            DoctrineOrmMappingsPass::createYamlMappingDriver(
+            DoctrineOrmMappingsPass::createXmlMappingDriver(
                 $mappings,
                 array('doctrine.orm.entity_manager'),
                 'dag_settings.driver.doctrine/orm'

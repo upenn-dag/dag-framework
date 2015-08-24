@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="DAG\Bundle\ResourceBundle\Doctrine\ORM\LogRepository" name="DAG\Component\Resource\Model\Log" table="accard_log">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="logDate" type="datetime" column="logDate" nullable="false"/>
+    <field name="action" type="string" column="action" length="16" nullable="false"/>
+    <field name="resource" type="string" column="resourceName" length="32" nullable="false"/>
+    <field name="resourceId" type="integer" column="resourceId" nullable="true"/>
+    <field name="route" type="string" column="route" length="100" nullable="false"/>
+    <field name="attributes" type="json_array" column="uriAttributes" nullable="true"/>
+    <field name="query" type="json_array" column="uriQuery" nullable="true"/>
+    <field name="request" type="json_array" column="uriRequest" nullable="true"/>
+    <many-to-one field="user" target-entity="DAG\Bundle\SecurityBundle\Model\User">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

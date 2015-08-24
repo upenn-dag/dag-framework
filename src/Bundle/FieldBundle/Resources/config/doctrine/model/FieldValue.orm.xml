@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="DAG\Component\Field\Model\FieldValue" table="FieldValue">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="stringValue" type="string" column="stringValue" nullable="true"/>
+    <field name="dateValue" type="datetime" column="dateValue" nullable="true"/>
+    <field name="numberValue" type="integer" column="numberValue" nullable="true"/>
+    <many-to-one field="optionValue" target-entity="DAG\Component\Option\Model\OptionValue">
+      <join-columns>
+        <join-column name="optionValueId" referenced-column-name="id" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>
