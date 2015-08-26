@@ -1,0 +1,11 @@
+dag:
+    option:
+        name: ~
+            slug: 'Name may only contain A-Z, a-z, 0-9, "_" and "-".'
+    option_value:
+        option:
+            type: Value must be connected to a value option.
+        locked:
+            type: Value must be either true or false.
+        order:
+            type: Value must be a valid integer.

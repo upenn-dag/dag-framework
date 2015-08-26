@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+  <!-- Option Model -->
+
+  <class name="DAG\Component\Option\Model\Option">
+    <property name="name">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Regex">
+        <option name="pattern">/^[a-z0-9-]+$/</option>
+        <option name="message">dag.option.name.slug</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">120</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="presentation">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">120</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+  </class>
+
+  <!-- Option Value Model -->
+
+  <class name="DAG\Component\Option\Model\OptionValue">
+    <property name="value">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">1</option>
+        <option name="max">255</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="option">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Type">
+        <option name="type">DAG\Component\Option\Model\OptionInterface</option>
+        <option name="message">dag.option.option.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="locked">
+      <constraint name="Type">
+        <option name="type">bool</option>
+        <option name="message">dag.option.locked.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="order">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Type">
+        <option name="type">int</option>
+        <option name="message">dag.option.order.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+  </class>
+
+</constraint-mapping>
