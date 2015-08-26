@@ -22,6 +22,21 @@ use DAG\Component\Option\Model\OptionOrder;
 class Field implements FieldInterface
 {
     /**
+     * Fied type shortcut.
+     *
+     * This, technically, shouldn't exist. But it does anyway because of a weird
+     * bug within Symfony's validator component where it is attempting to load
+     * the FieldTypes class multiple times when called via XML. It's odd, but
+     * it happens.
+     *
+     * @return array
+     */
+    public static function getFieldTypesForValidation()
+    {
+        return FieldTypes::getKeys();
+    }
+
+    /**
      * Field id.
      *
      * @var integer
@@ -85,7 +100,10 @@ class Field implements FieldInterface
      * @var array
      */
     protected $configuration = array();
-
+public static function getKeys()
+{
+    return FieldTypes::getKeys();
+}
 
     /**
      * {@inheritdoc}

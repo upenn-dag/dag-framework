@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+  <!-- Field Model -->
+
+  <class name="DAG\Component\Field\Model\Field">
+
+    <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+      <option name="message">dag.field.name.unique</option>
+      <option name="fields">
+        <value>name</value>
+      </option>
+      <option name="groups">
+        <value>dag</value>
+      </option>
+    </constraint>
+
+    <property name="name">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Regex">
+        <option name="pattern">/^[a-z0-9-]+$/</option>
+        <option name="message">dag.field.name.slug</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">120</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="presentation">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">120</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="type">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Choice">
+        <option name="callback">getFieldTypesForValidation</option>
+        <option name="strict">true</option>
+        <option name="message">dag.field.type.choice</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="option">
+      <constraint name="Type">
+        <option name="type">DAG\Component\Option\Model\OptionInterface</option>
+        <option name="message">dag.field.option.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="allowMultiple">
+      <constraint name="Type">
+        <option name="type">bool</option>
+        <option name="message">dag.field.allow_multiple.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="addable">
+      <constraint name="Type">
+        <option name="type">bool</option>
+        <option name="message">dag.field.addable.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="order">
+      <constraint name="Choice">
+        <option name="callback">
+          <value>DAG\Component\Option\Model\OptionOrder</value>
+          <value>getKeys</value>
+        </option>
+        <option name="strict">true</option>
+        <option name="message">dag.field.order.choice</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="configuration">
+      <constraint name="Type">
+        <option name="type">array</option>
+        <option name="message">dag.field.configuration.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+  </class>
+
+  <!-- Field Value Model -->
+
+  <class name="DAG\Component\Field\Model\FieldValue">
+    <property name="subject">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Type">
+        <option name="type">DAG\Component\Field\Model\FieldSubjectInterface</option>
+        <option name="message">dag.field_value.subject.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="field">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Type">
+        <option name="type">DAG\Component\Field\Model\FieldInterface</option>
+        <option name="message">dag.field_value.field.type</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+  </class>
+
+</constraint-mapping>
