@@ -52,14 +52,16 @@ class DAGFieldExtension extends AbstractResourceExtension
 
             $this->createSubjectServices($container, $config['driver'], $subject, $prefix, $convertedConfig);
 
+            // TODO: Remove
             if (!isset($config['validation_groups'][$prefix.':'.$subject]['prefix'])) {
                 $config['validation_groups'][$prefix.':'.$subject]['prefix'] = $prefix;
             }
+
             if (!isset($config['validation_groups'][$prefix.':'.$subject]['field'])) {
-                $config['validation_groups'][$prefix.':'.$subject]['field'] = array($prefix);
+                $config['validation_groups'][$prefix.':'.$subject]['field'] = array_unique(array($prefix, 'dag'));
             }
             if (!isset($config['validation_groups'][$prefix.':'.$subject]['field_value'])) {
-                $config['validation_groups'][$prefix.':'.$subject]['field_value'] = array($prefix);
+                $config['validation_groups'][$prefix.':'.$subject]['field_value'] = array_unique(array($prefix, 'dag'));
             }
         }
 
