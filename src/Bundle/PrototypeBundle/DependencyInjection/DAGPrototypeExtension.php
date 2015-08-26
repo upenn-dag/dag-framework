@@ -51,11 +51,12 @@ class DAGPrototypeExtension extends AbstractResourceExtension
 
             $this->createSubjectServices($container, $config['driver'], $subject, $prefix, $convertedConfig);
 
+            // TODO: Remove
             if (!isset($config['validation_groups'][$subject]['prefix'])) {
                 $config['validation_groups'][$subject]['prefix'] = $prefix;
             }
             if (!isset($config['validation_groups'][$subject]['prototype'])) {
-                $config['validation_groups'][$subject]['prototype'] = array($prefix);
+                $config['validation_groups'][$subject]['prototype'] = array_unique(array($prefix, 'dag'));
             }
         }
 
