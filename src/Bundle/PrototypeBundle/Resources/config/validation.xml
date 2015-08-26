@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+  <!-- Prototype Model -->
+
+  <class name="DAG\Component\Prototype\Model\Prototype">
+    <property name="name">
+      <constraint name="Regex">
+        <option name="pattern">/^[a-z0-9-]+$/</option>
+        <option name="message">dag.prototype.name.regex</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">60</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="presentation">
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">60</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="description">
+      <constraint name="Length">
+        <option name="min">3</option>
+        <option name="max">255</option>
+        <option name="groups">
+          <value>dag</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="fields">
+      <constraint name="Count">
+        <option name="min">1</option>
+      </constraint>
+    </property>
+  </class>
+
+</constraint-mapping>
