@@ -1,6 +1,6 @@
 dag:
     option:
-        name: ~
+        name:
             slug: 'Name may only contain A-Z, a-z, 0-9, "_" and "-".'
     option_value:
         option:
