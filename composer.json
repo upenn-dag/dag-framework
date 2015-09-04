@@ -3,6 +3,8 @@
     "license": "MIT",
     "type": "library",
     "description": "DAG Framework Tools",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Frank Bardon Jr.",
@@ -20,23 +22,26 @@
         }
     },
     "require": {
-        "php":                                   ">=5.4.0",
-        "symfony/symfony":                       "~2.7.0",
-        "symfony/assetic-bundle":                "~2.6",
-        "symfony/monolog-bundle":                "~2.7",
-        "sensio/distribution-bundle":            "~3.0",
-        "sensio/framework-extra-bundle":         "~3.0",
-        "doctrine/orm":                          "~2.4.0",
-        "doctrine/doctrine-bundle":              "~1.4",
-        "doctrine/doctrine-cache-bundle":        "~1.0",
-        "doctrine/doctrine-migrations-bundle":   "~1.0",
-        "twig/extensions":                       "~1.2",
-        "friendsofsymfony/rest-bundle":          "~1.5",
-        "jms/serializer-bundle":                 "0.13.*",
-        "white-october/pagerfanta-bundle":       "~1.0",
-        "lexik/translation-bundle":              "~2.1",
-        "gedmo/doctrine-extensions":             "~2.4",
-        "willdurand/hateoas-bundle":             "~0.5"
+        "php":             ">=5.4.0",
+        "doctrine/common": "~2.4|~2.5"
+    },
+    "suggest": {
+        "symfony/symfony":                     "Used by the framework to serve applications.",
+        "symfony/monolog-bundle":              "Used for multiple logging tasks within the framework.",
+        "sensio/distribution-bundle":          "Used by Symfony for supporting code.",
+        "sensio/framework-extra-bundle":       "Used by the bundles for convenient functionality.",
+        "doctrine/orm":                        "Used by the bundles as the database platform.",
+        "doctrine/doctrine-bundle":            "Used by the bundles to aid Doctrine related functionality.",
+        "doctrine/doctrine-cache-bundle":      "Used by the framework for various caching needs.",
+        "friendsofsymfony/rest-bundle":        "Used by the bundles to create the API.",
+        "jms/serializer-bundle":               "Used by the bundles to support the API.",
+        "willdurand/hateoas-bundle":           "Used by the bundles to support the API's advanced features.",
+        "white-october/pagerfanta-bundle":     "Used by the bundles for pagination.",
+        "doctrine/doctrine-migrations-bundle": "May be used for database version control.",
+        "symfony/assetic-bundle":              "May be used to bundle/distribute assets to your application.",
+        "twig/extensions":                     "May be used to add additional Twig functionality to views.",
+        "lexik/translation-bundle":            "May be used to add database driven translations.",
+        "gedmo/doctrine-extensions":           "May be used to add additional database functionality to Doctrine."
     },
     "require-dev": {
         "codeception/codeception": "dev-master",
@@ -44,16 +49,15 @@
     },
     "replace": {
         "dag/field": "self.version",
-        "dag/option": "self.version",
-        "dag/prototype": "self.version",
-        "dag/resource": "self.version",
         "dag/field-bundle": "self.version",
+        "dag/option": "self.version",
         "dag/option-bundle": "self.version",
+        "dag/prototype": "self.version",
         "dag/prototype-bundle": "self.version",
+        "dag/resource": "self.version",
         "dag/resource-bundle": "self.version",
         "dag/settings-bundle": "self.version"
     },
-    "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
             "dev-master": "1.1.x-dev",
