@@ -40,7 +40,7 @@
         "doctrine/doctrine-migrations-bundle":   "~1.0",
         "twig/extensions":                       "~1.2",
         "friendsofsymfony/rest-bundle":          "~1.5",
-        "jms/serializer-bundle":                 "0.13.*",
+        "jms/serializer-bundle":                 "~1.0",
         "white-october/pagerfanta-bundle":       "~1.0",
         "lexik/translation-bundle":              "~2.1",
         "gedmo/doctrine-extensions":             "~2.4",
