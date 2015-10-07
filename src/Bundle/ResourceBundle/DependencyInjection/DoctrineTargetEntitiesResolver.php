@@ -86,7 +86,7 @@ class DoctrineTargetEntitiesResolver
         if (class_exists($key)) {
             return $key;
         }
-die(var_dump($container));
+
         throw new InvalidArgumentException(
             sprintf('The class %s does not exist.', $key)
         );
