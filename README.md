@@ -12,6 +12,8 @@ With a minimal set of assumptions, it provides the flexibility to set your own d
 
 This framework assumes that you develop with (Symfony)[http://symfony.com/], using (Doctrine)[http://doctrine-project.org/], but is not limited to that technology stack. Each component is made up of two parts; the component and the bundle. The component is modular, and reusable. The bundle is the Symfony specific implementation in use by the DAG. There is no mandate requiring you to use the bundle in place of creating your own wrapper around each component.
 
+The DAG Framework borrows HEAVILY from the Sylius E-Commerce project in its architecture. Having borrowed and adapted much of the Resource code from that library, we've included links and the LICENSE from that project in this library. A gigantic thanks goes out to those guys, and much appreciation for all of their hard work and ingenuity.
+
 That's a high-level overview. To learn more, we invite you to (read the docs)[#].
 
 Core Components
@@ -28,7 +30,7 @@ The following components are used in tandem to create a DAG Framework applicatio
 Requirements
 ------------
 
-The DAG Components are only supported on 5.4.0 and up. In addition, all requirements of Symfony 2.8 and up are also requred if you wish to use the available bundles.
+The DAG Components are only supported on PHP 5.4.0 and up. In addition, all requirements of Symfony 2.8 and up are also required if you wish to use the available bundles.
 
 Installation
 ------------
